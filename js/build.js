@@ -1,9 +1,12 @@
-
 class warehouse 
 {
     //instance variables
 
     //constructor
+    constructor()
+    {
+        this.createGrid();
+    }
 
     //functions
 }
@@ -19,16 +22,17 @@ class warehouse
     };
     let gridItems = document.getElementsByClassName('grid-item');
 
-    // for (let index = 0; index < gridItems.length; index++) {
-    //     const element = array[index];
-    //     element.width(960/x);
-    //     element.height(960/x);
-    // }
-
     let parentWidth = document.getElementById('grid').offsetWidth;
 
     Array.from(gridItems).forEach(element => {
         element.style.width = parentWidth / 15;
         element.style.height = parentWidth / 15;
     });
+
+
 };
+
+let wh = new warehouse();
+
+
+   

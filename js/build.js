@@ -1,16 +1,16 @@
-
 class warehouse 
 {
     //instance variables
 
     //constructor
+    constructor()
+    {
+        this.createGrid();
+    }
 
     //functions
-}
-  
-  // function that builds a grid in the "container"
-   function createGrid() {
-        var x = 15;
+    createGrid() {
+    var x = 15;
     for (var rows = 0; rows < x; rows++) {
         for (var columns = 0; columns < x; columns++) {
             var node = document.createElement("div");
@@ -20,14 +20,14 @@ class warehouse
     };
     let gridItems = document.getElementsByClassName('grid-item');
 
-    // for (let index = 0; index < gridItems.length; index++) {
-    //     const element = array[index];
-    //     element.width(960/x);
-    //     element.height(960/x);
-    // }
-
     Array.from(gridItems).forEach(element => {
         element.style.width = 960 / x;
         element.style.height = 960 / x;
     });
-};
+
+    };
+}
+
+let wh = new warehouse();
+
+   

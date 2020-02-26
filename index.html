@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Eindopdracht</title>
 </head>
-<body>
+<body onload="createGrid()">
    <div class="container-fluid">
        <div class="row d-flex justify-content-between">
            <div class="col-sm-2 border">
@@ -57,11 +57,10 @@
                     Magazijn
                 </div>
                 <!-- Big grid begint hier -->
-                <div class="col-10">
-                    
-                </div>
+                <div class="col-10" id="grid"></div>
            </div>
        </div>
    </div>
+   <script src="js/build.js"></script>
 </body>
 </html>

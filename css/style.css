@@ -25,7 +25,7 @@
 }
 
 #grid {
-	/* position: relative;
+	position: relative;
 	top: 30px;
 	outline:2px solid #000;
 	font-size: 0;
@@ -33,7 +33,7 @@
 	height:960px;
 	width:960px;
 	padding: 0;
-	border: none; */
+	border: none;
 	margin: 0px;
 	max-width: 100%;
 }

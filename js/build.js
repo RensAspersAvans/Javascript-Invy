@@ -13,8 +13,9 @@ class warehouse
   
   // function that builds a grid in the "container"
    function createGrid() {
-    for (var rows = 0; rows < 15; rows++) {
-        for (var columns = 0; columns < 15; columns++) {
+       var totalBlocks = 15;
+    for (var rows = 0; rows < totalBlocks; rows++) {
+        for (var columns = 0; columns < totalBlocks; columns++) {
             var node = document.createElement("div");
             node.classList.add("grid-item");
             document.getElementById("grid").appendChild(node);
@@ -25,8 +26,8 @@ class warehouse
     let parentWidth = document.getElementById('grid').offsetWidth;
 
     Array.from(gridItems).forEach(element => {
-        element.style.width = parentWidth / 15;
-        element.style.height = parentWidth / 15;
+        element.style.width = parentWidth / totalBlocks;
+        element.style.height = parentWidth / totalBlocks;
     });
 
 

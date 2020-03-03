@@ -25,6 +25,21 @@
                     <div class="h5">
                         Producten
                     </div>
+                    <div class="col-m2">
+                        <button id="open-create-popup">Product aanmaken</button>
+
+                        <div id="form-popup">
+                            <form action="#" id="creationForm"class="formcontainer">
+                                <label for="name">Name</label>
+                                <input type="text" placeholder="productnaam" name="name" required>
+                                <label for="description">Description</label>
+                                <textarea placeholder="productbeschrijving" name="description" required></textarea>
+                                <br>
+                                <button type="submit" class="form-button" id="saveForm">Product aanmaken</button>
+                                <button type="button" class="form-button" id="close-create-popup">Product annuleren</button>
+                            </form>
+                        </div>
+                    </div>
                     <div class="col-2">
                         <p>"list"</p>
                     </div>
@@ -41,10 +56,21 @@
             <!-- Begin weer -->
                 <div class="col-2 mt-2 border" id="weather">
                     <div class="h5">
-                        Weer
+                        <div class="search">
+                            <input type="text" id="weather-search" placeholder="Voer stad naam in.">
+                            <button id="search-button" href="#">zoeken</a>
+                        </div>
+                        <div id="weather-response" class="row">
+                            <div id="city-name" class="col-2"></div>
+                            <div id="temperature" class="col-2"></div>
+                            <div id="icon-div" class="col-2">
+                                <img id="weather-icon" >
+                            </div>
+                            <div id="humidity" class="col-2"></div>
+                        </div>
                     </div>
                     <div class="col-2">
-                        <p>"API"</p>
+                        
                     </div>
                 </div>
            </div>
@@ -62,5 +88,7 @@
        </div>
    </div>
    <script src="js/build.js"></script>
+   <script src="js/weatherAPI.js"></script>
+   <script src="js/ProductCreationPopup.js"></script>
 </body>
 </html>

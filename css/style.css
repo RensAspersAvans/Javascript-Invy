@@ -51,8 +51,17 @@
 }
 
 #grid {
-	margin: 0px;
-	max-width: 100%;
+	position: relative;
+    top: 30px;
+    outline:2px solid #000;
+    font-size: 0;
+    margin:auto;
+    height:960px;
+    width:960px;
+    padding: 0;
+    border: none;
+    margin: 0px;
+    max-width: 100%;
 }
 
 .grid-item {

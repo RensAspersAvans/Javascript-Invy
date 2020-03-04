@@ -53,9 +53,11 @@ class WareHouse
         };
         let gridItems = document.getElementsByClassName('grid-item');
 
+        let parentWidth = document.getElementById('grid').offsetWidth;
+
         Array.from(gridItems).forEach(element => {
-            element.style.width = 960 / size;
-            element.style.height = 960 / size;
+            element.style.width = parentWidth / size;
+            element.style.height = parentWidth / size;
         });
     }
 }

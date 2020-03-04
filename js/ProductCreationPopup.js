@@ -35,10 +35,11 @@ function toJSON(){
 function openForm(){
     form.style.display="block";
     openFormButton.style.display="none";
-    creationForm.reset();
+
 }
 
 function closeForm(){
     form.style.display="none";
-    openFormButton.style.display="block";
+    openFormButton.style.display="block";    
+    creationForm.reset();
 }

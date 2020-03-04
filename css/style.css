@@ -1,18 +1,19 @@
 #regio{
-    height: 100px;
     width: 100%;
+    
 }
 
 #products{
-    height: 250px;
+    height: 250;
+    overflow: scroll;
 }
 
 #selected-products{
-    height: 250px;
+
 }
 
 #weather{
-    height: 100px;
+
 }
 
 #stockroom{
@@ -36,3 +37,24 @@
 	outline:1px solid #000;
 	display:inline-block;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+  }

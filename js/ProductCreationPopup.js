@@ -55,8 +55,11 @@ function saveForm(event){
     }
     else{
         details[detailIndex] = detailArea.value;
-        let jsonstr = toJSON( this )
-        let json = JSON.parse(jsonstr);
+        let jsonstr = toJSON( this );
+        let selectedRegio = document.getElementById("regioSelect");
+        let regio = Regios.getRegio(selectedRegio[selectedRegio.selectedIndex].innerText.toLowerCase());
+        regio.items.push(jsonstr);
+        Regios.updateRegio(regio);
         //todo: SAVING
         closeForm();
     }

@@ -143,12 +143,15 @@ document.addEventListener("regioselect", switchInterface);
             //initialize for the first time
             kleding = new WareHouse("kleding", null, null);
             kleding.map = kledingMap;
+            kleding.items = [];
             Regios.addRegio(kleding);
             tierlatijn = new WareHouse("tierlatijn", null, null);
             tierlatijn.map = tierlatijnMap;
+            tierlatijn.items = [];
             Regios.addRegio(tierlatijn);
             decoratie = new WareHouse("decoratie", null, null);
             decoratie.map = decoratieMap;
+            decoratie.items = [];
             Regios.addRegio(decoratie);
         } else //load existing data
         {
@@ -157,7 +160,6 @@ document.addEventListener("regioselect", switchInterface);
             decoratie = Regios.getRegio("decoratie");
         }
         WareHouse.showMap(kleding.map);
-        // temp.showGrid(temp.map);
     };
 
     function switchInterface()

@@ -55,12 +55,11 @@ function saveForm(event){
     }
     else{
         details[detailIndex] = detailArea.value;
+        console.log("final: " + json);
         let jsonstr = toJSON( this )
         let json = JSON.parse(jsonstr);
         //todo: SAVING
         console.log("final: " + json);
-        details = [];
-        detailIndex = 0;
         closeForm();
     }
     

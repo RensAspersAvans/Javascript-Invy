@@ -36,10 +36,15 @@
 
                         <div id="form-popup">
                             <form action="#" id="creationForm"class="formcontainer">
-                                <label for="name">Name</label>
-                                <input type="text" placeholder="productnaam" name="name" required>
-                                <label for="description">Description</label>
-                                <textarea placeholder="productbeschrijving" name="description" required></textarea>
+                                <label for="name">Naam</label>
+                                <input type="text" placeholder="productnaam" name="name">
+                                <label for="price">Prijs</label>
+                                <input type="number" placeholder="prijs" name="price"></input>
+                                <label for="detail">eigenschappen:</label>
+                                <textarea placeholder="eigenschap" id="detailArea"></textarea>
+                                <button id="previous" type="button"><</button>
+                                <button id="next" type="button">+</button>
+                                
                                 <br>
                                 <button type="submit" class="form-button" id="saveForm">Product aanmaken</button>
                                 <button type="button" class="form-button" id="close-create-popup">Product annuleren</button>

@@ -16,22 +16,21 @@ previousButton.addEventListener("click", previousDetail);
 nextButton.addEventListener("click", nextOrNewDetail);
 
 function nextOrNewDetail(){
-    if(detailIndex >= details.length){
+    if(detailIndex >= details.length - 1){
         details[detailIndex] = detailArea.value;
         detailIndex++;
-        details[detailIndex] = "";
-        detailArea.value = detailArea[detailIndex];
+        detailArea.value = null;
     }
     else{
         details[detailIndex] = detailArea.value;
         detailIndex++;
-        detailArea.value = detials[detailIndex];
+        detailArea.value = details[detailIndex];
     }
     if(details.length >= detailIndex){
-        nextButton.innerText = "+";
+        nextButton.textContent = "+";
     }
     else{
-        nextButton.innerText = ">";
+        nextButton.textContent = ">";
     }
 }
 
@@ -40,17 +39,26 @@ function previousDetail(){
         return;
     }
     else{
-        details[detailIndex] = detailArea.value;
+        if(detailArea.value != ""){
+            details[detailIndex] = detailArea.value;
+        }     
         detailIndex--;
         detailArea.value = details[detailIndex];
+        nextButton.textContent=">";
     }
 }
 
 function saveForm(event){
-    if(creationForm.checkValidity()){
-        let json = toJSON( this )
+    
+    if(false){
+        return;
+    }
+    else{
+        details[detailIndex] = detailArea.value;
+        let jsonstr = toJSON( this )
+        let json = JSON.parse(jsonstr);
         //todo: SAVING
-        console.log(json);
+        console.log("final: " + json);
         details = [];
         detailIndex = 0;
         closeForm();
@@ -60,15 +68,18 @@ function saveForm(event){
 
 function toJSON(){
     let obj = {};
-    let elements = form.querySelectorAll("input, select");
+    let detailsArray = details.filter(element => {
+            return element != "";
+    });
+    let elements = form.querySelectorAll("input");
     for (let index = 0; index < elements.length; index++) {
         let element = elements[index];
         let name = element.name;
         let value = element.value;
-
         obj [ name ] = value;
-        
+        element.value=null;
     }
+    obj["details"] = detailsArray;
     return JSON.stringify( obj );
 }
 
@@ -83,7 +94,8 @@ function openForm(){
 function closeForm(){
     form.style.display="none";
     openFormButton.style.display="block";    
-    creationForm.reset();
     details = [];
     detailIndex = 0;
+    detailArea.value= null;
+
 }

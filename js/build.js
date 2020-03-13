@@ -179,7 +179,51 @@ class WareHouse
             node.setAttribute('draggable', true);
             document.getElementById("products").appendChild(node);
         }
+    }
 
+    static showInfoSelectedItem(itemCode)
+    {
+        //get currentregio
+        let optionRegios = document.getElementById("regioSelect");
+        let selectedRegio = Regios.getRegio(optionRegios[optionRegios.selectedIndex].innerText.toLowerCase());
+
+        //get number from itemCode
+        let reggex = /\d+/g;
+        itemCode = parseInt(itemCode.match(reggex)[0]);
+
+        // delete old selected item
+        let oldItemList = document.getElementById("selected-products");
+        while (oldItemList.lastElementChild) {
+            oldItemList.removeChild(oldItemList.lastElementChild);
+        }
+
+        //fill with new item
+        var itemName = document.createElement("p");
+        itemName.classList.add('m-0');
+        itemName.innerHTML = "<strong>Naam: </strong>" + selectedRegio.items[itemCode].name;
+        var itemPrice = document.createElement("p");
+        itemPrice.classList.add('m-0');
+        itemPrice.innerHTML = "<strong>Prijs: </strong>" + selectedRegio.items[itemCode].price;
+        // var itemDetails = document.createElement("p");
+        // itemDetails.classList.add('m-0');
+        // itemDetails.innerHTML = "<strong>Price: </strong>" + selectedRegio.items[itemCode].price;
+
+        document.getElementById("selected-products").append(itemName, itemPrice);
+
+        // var itemDesc = document.createElement("p");
+        // itemDesc.innerHTML = "Prijs: " + selectedRegio.items[itemCode].de;
+        // document.getElementById("selected-products").appendChild(itemName);
+    }
+
+    static resetSelected()
+    {
+        let oldItemList = document.getElementById("selected-products");
+        while (oldItemList.lastElementChild) {
+            oldItemList.removeChild(oldItemList.lastElementChild);
+        }
+        var node = document.createElement("p");
+        node.innerHTML = "leeg";
+        document.getElementById("selected-products").append(node);
     }
 
 
@@ -238,6 +282,7 @@ document.addEventListener("regioselect", switchInterface);
                 break;
         }
         WareHouse.showItems();
+        WareHouse.resetSelected();
     }
 
 

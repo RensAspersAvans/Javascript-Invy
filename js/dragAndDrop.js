@@ -1,5 +1,19 @@
 const dropzones = document.querySelector('.dropzones');
 
+document.getElementById("grid").addEventListener("click", function(e) {
+    // e.target is the clicked element!
+    // If it was a list item
+    for (let index in e.target.classList)
+    {
+        if (/[a-z]\d/.test(e.target.classList[index]))
+        {
+          //show info in side bar
+            WareHouse.showInfoSelectedItem(e.target.classList[index]);
+            return;
+        }
+    }
+});
+
 let el = null;
 let currentItem;
 let currentClassList;
@@ -70,7 +84,6 @@ dropzones.addEventListener('drop', (e) => {
     {
         e.preventDefault();
         e.target.style.backgroundColor = "yellow";
-
         e.target.setAttribute('draggable', true);
         e.target.classList.remove('dropzone');
         el = null;
@@ -89,7 +102,7 @@ dropzones.addEventListener('drop', (e) => {
         let productItem = document.getElementsByClassName(currentProduct)[0]
         productItem.setAttribute('draggable',true);
         productItem.style.backgroundColor = "green";
-
+        WareHouse.resetSelected();
     }
     currentItem = null;
 });

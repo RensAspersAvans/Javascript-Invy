@@ -1,9 +1,12 @@
 const dropzones = document.querySelector('.dropzones');
 
 let el = null;
+let currentItem;
+let currentClassList;
+let currentProduct;
 
 document.querySelector('.draggable-items').addEventListener('dragstart', e => {
-    console.log(e)
+    // console.log(e)
     e.dataTransfer.dropEffect = 'move';
     el = e.target.cloneNode(true)
     el.removeAttribute('draggable');
@@ -17,30 +20,51 @@ dropzones.addEventListener('dragover', (e) => {
         e.preventDefault();
 });
 
-
 dropzones.addEventListener('dragenter', (e) => {
-    document.getElementById("li1").setAttribute('draggable',false);
+    if (currentItem == null)
+    {
+        currentItem = e.target;
+        currentClassList = currentItem.classList;
+
+        //removes draggable from product-item
+        for(let index in currentClassList)
+        {
+            if(/[a-z]\d/.test(currentClassList[index]))
+            {
+                currentProduct = currentClassList[index];
+                let productItem = document.getElementsByClassName(currentClassList[index])[0]
+                productItem.removeAttribute('draggable');
+                productItem.style.backgroundColor = "orange";
+                break;
+            }
+        }
+    }
         let position = e.target.id;
         let row = position.split("-")[0];
         let col = position.split("-")[1];
         let selectedRegio = document.getElementById("regioSelect");
         let regio = Regios.getRegio(selectedRegio.options[selectedRegio.selectedIndex].text.toLowerCase());
 
-    if (Number.isInteger(parseInt(row)))
-    {
-        if (regio.map[row][col] == "p")
+        if (Number.isInteger(parseInt(row)))
         {
-            e.target.style.backgroundColor = "lightgrey";
-            regio.map[row][col] = "null";
-            Regios.updateRegio(regio);
-            e.target.classList.add('dropzone');
+            let temp = regio.map[row][col];
+            if (regio.map[row][col] == currentProduct)
+            {
+                e.target.style.backgroundColor = "lightgrey";
+                regio.map[row][col] = "null";
+                Regios.updateRegio(regio);
+                e.target.classList.add('dropzone');
+                e.target.classList.remove(currentProduct);
+                document.getElementById(e.target.id).removeAttribute('draggable');
+            }
         }
-    }
 
-    if (e.target.classList.contains('dropzone')) {
-        e.target.style.backgroundColor = "black";
-    }
-})
+        if (e.target.classList.contains('dropzone')) {
+            e.target.style.backgroundColor = "black";
+        }
+        // currentItem = null;
+});
+
 dropzones.addEventListener('drop', (e) => {
     if (e.target.classList.contains('dropzone'))
     {
@@ -57,13 +81,18 @@ dropzones.addEventListener('drop', (e) => {
         let selectedRegio = document.getElementById("regioSelect");
 
         let regio = Regios.getRegio(selectedRegio.options[selectedRegio.selectedIndex].text.toLowerCase());
-        regio.map[row][col] = "p";
+        regio.map[row][col] = currentProduct;
         Regios.updateRegio(regio);
+        document.getElementById(position).classList.add(currentProduct);
     } else
     {
-        document.getElementById("li1").setAttribute('draggable',true);
+        let productItem = document.getElementsByClassName(currentProduct)[0]
+        productItem.setAttribute('draggable',true);
+        productItem.style.backgroundColor = "green";
+
     }
-})
+    currentItem = null;
+});
 
 dropzones.addEventListener('dragleave', (e) => {
     if (e.target.classList.contains('dropzone')) {

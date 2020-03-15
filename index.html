@@ -55,15 +55,30 @@
                     <div class="bg-white p-2 draggable-items" id="products">
                         <div draggable="true" id="li1">listitem</div>
                         <div draggable="true" id="li2">listitem</div>
-                </div>
+                    </div>
             <!-- Begin geselecteerde producten -->
                 <div class="col mt-2 p-2" id="selected-products">
                     <div class="h5">
                         Geselecteerde Producten
                     </div>
-                    <div>
-                        <p>"list"</p>
+                    <div id="product-details">
+                        <h4 id="product-name"></h4>
+                        <p id="product-price"></p>
+                        <ul id="product-details-list">
+                        
+                        </ul>
+                        <div id="no-img">
+                            <input type="file" id="getPicture" />
+                        </div>
+                        <div id="product-img-div">
+                            <canvas id="product-img">
+                                
+                            </canvas>
+                        </div>
+                        
+                        
                     </div>
+                    <button id="dummmyloader">Load dummy</button>
                 </div>
             <!-- Begin weer -->
                 <div class="col mt-2 p-2" id="weather">
@@ -98,5 +113,6 @@
    <script src="js/dragAndDrop.js"></script>
    <script src="js/weatherAPI.js"></script>
    <script src="js/ProductCreationPopup.js"></script>
+   <script src="js/ItemDetails.js"></script>
 </body>
 </html>

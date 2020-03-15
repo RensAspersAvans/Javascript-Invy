@@ -66,13 +66,6 @@ function handleFileSelect(evt) {
     reader.readAsDataURL(newFile);
 }
 
-document.getElementById('getPicture').addEventListener('change', handleFileSelect, false);
-
-
-function loadDummy(){
-    loadItem(dummy2);
-}
-
 function dataURItoBlob(dataURI) {
     var byteString = atob(dataURI.split(',')[1]);
     var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
@@ -92,9 +85,4 @@ function blobToDataURL(blob, callback) {
     a.readAsDataURL(blob);
 }
 
-const dummy = document.getElementById("dummmyloader");
-dummy.addEventListener("click", loadDummy);
-
-
-
-loadItem(dummy1);
+document.getElementById('getPicture').addEventListener('change', handleFileSelect, false);

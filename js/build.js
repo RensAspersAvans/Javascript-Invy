@@ -104,11 +104,14 @@ class WareHouse
                     case "#":
                         node.style.backgroundColor = "grey";
                         break;
-                    case "p":
-                        node.style.backgroundColor = "yellow";
-                        node.setAttribute('draggable', true);
-                        break;
                     default:
+                        if (/[a-z]\d/.test(temp[columns]))
+                        {
+                            node.style.backgroundColor = "yellow";
+                            node.setAttribute('draggable', true);
+                            node.classList.add(temp[columns]);
+                            break;
+                        }
                         node.classList.add("dropzone");
                         break;
                 }
@@ -123,6 +126,104 @@ class WareHouse
             element.style.width = parentWidth / size;
             element.style.height = parentWidth / size;
         });
+    }
+
+    static isStored(item)
+    {
+        let result = false;
+        let optionRegios = document.getElementById("regioSelect");
+        let selectedRegio = Regios.getRegio(optionRegios[optionRegios.selectedIndex].innerText.toLowerCase());
+
+        for (let row = 0; row < 15; row++)
+        {
+            for (let col = 0; col < 15; col++)
+            {
+                if (selectedRegio.map[row][col] == item)
+                {
+                    result = true;
+                }
+            }
+        }
+        return result;
+    }
+
+    static showItems()
+    {
+
+        let oldItemList = document.getElementById("products");
+        while (oldItemList.lastElementChild) {
+            oldItemList.removeChild(oldItemList.lastElementChild);
+        }
+
+        let optionRegios = document.getElementById("regioSelect");
+        let selectedRegio = Regios.getRegio(optionRegios[optionRegios.selectedIndex].innerText.toLowerCase());
+
+        for (let item in selectedRegio.items)
+        {
+            var node = document.createElement("div");
+            node.classList.add("product-item");
+            node.classList.add("p-2");
+            node.classList.add("border-bottom");
+            node.classList.add("text-break");
+            node.classList.add("p" + item);
+            node.innerHTML = selectedRegio.items[item].name;
+            if (this.isStored("p" + item))
+            {
+                node.style.backgroundColor = "orange";
+            } else
+            {
+                node.style.backgroundColor = "green";
+            }
+            node.style.color = "white";
+            node.style.fontWeight = "bold";
+            node.setAttribute('draggable', true);
+            document.getElementById("products").appendChild(node);
+        }
+    }
+
+    static showInfoSelectedItem(itemCode)
+    {
+        //get currentregio
+        let optionRegios = document.getElementById("regioSelect");
+        let selectedRegio = Regios.getRegio(optionRegios[optionRegios.selectedIndex].innerText.toLowerCase());
+
+        //get number from itemCode
+        let reggex = /\d+/g;
+        itemCode = parseInt(itemCode.match(reggex)[0]);
+
+        // delete old selected item
+        let oldItemList = document.getElementById("selected-products");
+        while (oldItemList.lastElementChild) {
+            oldItemList.removeChild(oldItemList.lastElementChild);
+        }
+
+        //fill with new item
+        var itemName = document.createElement("p");
+        itemName.classList.add('m-0');
+        itemName.innerHTML = "<strong>Naam: </strong>" + selectedRegio.items[itemCode].name;
+        var itemPrice = document.createElement("p");
+        itemPrice.classList.add('m-0');
+        itemPrice.innerHTML = "<strong>Prijs: </strong>" + selectedRegio.items[itemCode].price;
+        // var itemDetails = document.createElement("p");
+        // itemDetails.classList.add('m-0');
+        // itemDetails.innerHTML = "<strong>Price: </strong>" + selectedRegio.items[itemCode].price;
+
+        document.getElementById("selected-products").append(itemName, itemPrice);
+
+        // var itemDesc = document.createElement("p");
+        // itemDesc.innerHTML = "Prijs: " + selectedRegio.items[itemCode].de;
+        // document.getElementById("selected-products").appendChild(itemName);
+    }
+
+    static resetSelected()
+    {
+        let oldItemList = document.getElementById("selected-products");
+        while (oldItemList.lastElementChild) {
+            oldItemList.removeChild(oldItemList.lastElementChild);
+        }
+        var node = document.createElement("p");
+        node.innerHTML = "leeg";
+        document.getElementById("selected-products").append(node);
     }
 
 
@@ -160,6 +261,7 @@ document.addEventListener("regioselect", switchInterface);
             decoratie = Regios.getRegio("decoratie");
         }
         WareHouse.showMap(kleding.map);
+        WareHouse.showItems();
     };
 
     function switchInterface()
@@ -179,6 +281,8 @@ document.addEventListener("regioselect", switchInterface);
             default:
                 break;
         }
+        WareHouse.showItems();
+        WareHouse.resetSelected();
     }
 
 

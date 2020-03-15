@@ -58,9 +58,10 @@ function saveForm(event){
         let jsonstr = toJSON( this );
         let selectedRegio = document.getElementById("regioSelect");
         let regio = Regios.getRegio(selectedRegio[selectedRegio.selectedIndex].innerText.toLowerCase());
-        regio.items.push(jsonstr);
+
+        regio.items.push(JSON.parse(jsonstr));
         Regios.updateRegio(regio);
-        //todo: SAVING
+        WareHouse.showItems();
         closeForm();
     }
     

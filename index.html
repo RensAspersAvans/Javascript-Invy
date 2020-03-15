@@ -8,12 +8,12 @@
     <script type="text/javascript" src="json/warehouses.js"></script>
     <title>Eindopdracht</title>
 </head>
-<body>
+<body class="">
    <div class="container-fluid">
        <div class="row d-flex justify-content-between dropzones">
-           <div class="col-sm-2 bg-light">
+           <div class="col-sm-2 bg-light rounded" id="menubar">
                <!-- Begin regio's -->
-                <div class="col mt-2 p-2" id="regio">
+                <div class="col mt-2 p-2 bg-white rounded" id="regio">
                     <div class="h5">
                         Regio's
                     </div>
@@ -27,12 +27,12 @@
                       </div>
                 </div>
             <!-- Begin producten -->
-                <div class="col mt-2 p-2" >
+                <div class="col mt-2 p-2 bg-white rounded">
                     <div class="h5">
                         Producten
                     </div>
 
-                        <button class="btn btn-info mb-2" id="open-create-popup">Product aanmaken</button>
+                        <button class="btn btn-info mb-2 w-100" id="open-create-popup">Product aanmaken</button>
 
                         <div id="form-popup">
                             <div id="creationForm"class="formcontainer">
@@ -51,11 +51,8 @@
                             </div>
                         </div>
 
+                        <div class="bg-white draggable-items" id="products"></div>
 
-                    <div class="bg-white p-2 draggable-items" id="products">
-                        <div draggable="true" id="li1">listitem</div>
-                        <div draggable="true" id="li2">listitem</div>
-                    </div>
             <!-- Begin geselecteerde producten -->
                 <div class="col mt-2 p-2" id="selected-products">
                     <div class="h5">
@@ -78,34 +75,35 @@
                         
                         
                     </div>
-                    <button id="dummmyloader">Load dummy</button>
                 </div>
-            <!-- Begin weer -->
-                <div class="col mt-2 p-2" id="weather">
-                    <div class="h5">
-                        <div class="search">
-                            <input class="w-100 mb-2" type="text" id="weather-search" placeholder="stadnaam">
-                            <a class="btn btn-info w-100" id="search-button" href="#weather-response">zoeken</a>
-                        </div>
-                        <div id="weather-response" class="d-flex flex-column justify-content-center bg-white pt-2 pb-2 mt-2">
-                            <div id="city-name" class="col text-center"></div>
-                            <div id="temperature" class="col text-center"></div>
-                            <div id="icon-div" class="col text-center">
-                                <img id="weather-icon" class="col">
-                            </div>
-                            <div id="humidity" class="col text-center"></div>
-                        </div>
-                    </div>
-                </div>
+           <!-- Begin weer -->
+           <div class="col mt-2 p-2 bg-white rounded" id="weather">
+               <div class="h5">
+                   <div class="search">
+                       <input class="w-100 mb-2" type="text" id="weather-search" placeholder="stadnaam">
+                       <a class="btn btn-info w-100" id="search-button" href="#weather-response">zoeken</a>
+                   </div>
+                   <div id="weather-response" class="d-flex flex-column justify-content-center pt-2">
+                       <div id="city-name" class="col text-center"></div>
+                       <div id="temperature" class="col text-center"></div>
+                       <div id="icon-div" class="col text-center">
+                           <img id="weather-icon" class="col">
+                       </div>
+                       <div id="humidity" class="col text-center"></div>
+                   </div>
+               </div>
            </div>
            </div>
            <!-- Begin magazijn -->
-           <div class="col-10 p-2">
-                <div class="h5">
-                    Magazijn
-                </div>
+           <div class="col-10 p-2" id="magazijn">
+
             <!-- Big grid begint hier -->
-            <div class="col dropzones draggable-items" id="grid"></div>
+           <div class="bg-white rounded" id="grid-holder">
+               <div class="h5 pt-2 pl-4 mx-auto">
+                   Magazijn
+               </div>
+                <div class="col dropzones draggable-items" id="grid"></div>
+           </div>
        </div>
    </div>
    <script src="js/storage.js"></script>

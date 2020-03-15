@@ -1,20 +1,22 @@
+body {
+    background-color: #F8F9FA;
+}
+
+#menubar{
+    height: 100%;
+}
+
+#grid-holder {
+    height: 100%;
+}
+
 #regio{
     width: 100%;
-    
 }
 
 #products{
-	height: 250;
-	
+	height: 250px;
     overflow: scroll;
-}
-
-#selected-products{
-
-}
-
-#weather{
-
 }
 
 #form-popup {
@@ -52,16 +54,14 @@
 }
 
 #grid {
-	position: relative;
+	position: static;
     top: 30px;
-    /*outline:2px solid #000;*/
     font-size: 0;
     margin:auto;
     height:960px;
     width:960px;
     padding: 0;
     border: none;
-    margin: 0px;
     max-width: 100%;
 }
 

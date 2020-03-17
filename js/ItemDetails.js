@@ -60,8 +60,8 @@ function loadPicture(item){
         }
     }
 
-
     if(!dataURL == ""){
+        canvas.style.display = "block";
         let img = new Image();
             img.onload = function(){
             canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);

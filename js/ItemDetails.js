@@ -118,7 +118,12 @@ function saveImage(){
     loadedProduct["picture"] = canvas.toDataURL("image/png");
 }
 
-document.getElementById('getPicture').addEventListener('change', handleFileSelect, false);
-showDetails(dummy1);
+function init(){
+    if(loadedProduct == null){
+        imgUploadBtn.style.display = "none";
+    }
+}
 
+document.getElementById('getPicture').addEventListener('change', handleFileSelect, false);
+init();
 initDrawing();

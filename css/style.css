@@ -119,8 +119,18 @@ body {
 }
 
 #product-img-div{
-    max-width: fit-content;
-    min-width: fit-content;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    top: 0;
+	left: 0;
+    position: fixed;
+    margin: auto;
+    background-color: rgba(102, 153, 153, 0.5);
+}
+
+#loaded-img-div{
+    display: hidden;
 }
 
   

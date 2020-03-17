@@ -4,6 +4,7 @@ const productDetails = document.getElementById("product-details-list");
 const canvas = document.getElementById("product-img");
 const imgUploadBtn = document.getElementById("no-img");
 const imgDiv = document.getElementById("product-img-div");
+const loadedDiv = document.getElementById("loaded-img-div");
 const ctx = canvas.getContext("2d");
 let prevX = 0;
 let currX = 0;
@@ -61,7 +62,7 @@ function loadPicture(item){
     }
 
     if(!dataURL == ""){
-        canvas.style.display = "block";
+        loadedDiv.style.display = "block";
         let img = new Image();
             img.onload = function(){
             canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
@@ -116,7 +117,6 @@ function mouseMove(e){
         prevY = currY;
         currX = e.clientX - canvas.getBoundingClientRect().left;
         currY = e.clientY - canvas.getBoundingClientRect().top;
-        console.log("width: " + canvas.width + "  height: " + canvas.height + "  X: " + currX + "  Y: " + currY);
         draw();
     }
 }
@@ -163,9 +163,11 @@ function emptySelected(){
     {
         productDetails.removeChild(productDetails.firstChild);
     }
-    canvas.style.display = "none";
+    loadedDiv.style.display = "none";
     imgUploadBtn.style.display = "none";
 }
 
+document.getElementById("open-canvas").addEventListener('click', function(e){imgDiv.style.display = "block";}, false);
+document.getElementById("close-canvas").addEventListener('click', function(e){imgDiv.style.display = "none";}, false);
 document.getElementById('getPicture').addEventListener('change', handleFileSelect, false);
 init();

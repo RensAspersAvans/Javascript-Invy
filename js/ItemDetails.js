@@ -27,16 +27,18 @@ function loadItem(item){
 }
 
 function loadPicture(item){
-    let blob = item["picture"]
-    if(!blob == ""){
+    let dataURL = item["picture"]
+    if(!dataURL == ""){
         let img = new Image();
         img.onload = function(){
             canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
             canvas.getContext("2d").drawImage(img, 0, 0);
         } 
-        blobToDataURL(blob, function(dataurl){
-            img.src = dataurl;
-        });
+        img.src = dataURL;
+
+        //blobToDataURL(blob, function(dataurl){
+        //    img.src = dataurl;
+        //});
     }
 }
 
@@ -48,8 +50,6 @@ function handleFileSelect(evt) {
     }
 
     var reader = new FileReader();
-
-    // Closure to capture the file information.
     reader.onload = (function(theFile) {
       return function(e) {
         let buffer = new Image();
@@ -58,7 +58,8 @@ function handleFileSelect(evt) {
             canvas.width = buffer.width;
 	        canvas.height = buffer.height;
             canvas.getContext("2d").drawImage(buffer, 0, 0);
-            loadedProduct["picture"] = dataURItoBlob(canvas.toDataURL("image/png"));
+            loadedProduct["picture"] = canvas.toDataURL("image/png");
+            loadPicture(loadedProduct);
         }
         
       };
@@ -86,4 +87,4 @@ function blobToDataURL(blob, callback) {
 }
 
 document.getElementById('getPicture').addEventListener('change', handleFileSelect, false);
-loadItem(dummy2);
+showDetails(dummy1);

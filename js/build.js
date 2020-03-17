@@ -173,10 +173,11 @@ class WareHouse
             } else
             {
                 node.style.backgroundColor = "green";
+                node.setAttribute('draggable', true);
             }
             node.style.color = "white";
             node.style.fontWeight = "bold";
-            node.setAttribute('draggable', true);
+
             document.getElementById("products").appendChild(node);
         }
     }

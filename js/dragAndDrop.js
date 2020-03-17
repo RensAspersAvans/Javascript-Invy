@@ -8,7 +8,8 @@ document.getElementById("grid").addEventListener("click", function(e) {
         if (/[a-z]\d/.test(e.target.classList[index]))
         {
           //show info in side bar
-            WareHouse.showInfoSelectedItem(e.target.classList[index]);
+          //   WareHouse.showInfoSelectedItem(e.target.classList[index]);
+            loadItem(e.target.classList[index])
             return;
         }
     }

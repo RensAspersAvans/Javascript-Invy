@@ -17,28 +17,69 @@ let dummy1 = {"name":"Ice cream", "price":"14", "details":["cold", "sweet", "str
 
 let dummy2 = {"name":"Boomer-juice", "price":"69", "details":["old", "stinks", "costs a lot of money"], "picture":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACWCAYAAABkW7XSAAAEYklEQVR4Xu3UAQkAAAwCwdm/9HI83BLIOdw5AgQIRAQWySkmAQIEzmB5AgIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlAABg+UHCBDICBisTFWCEiBgsPwAAQIZAYOVqUpQAgQMlh8gQCAjYLAyVQlKgIDB8gMECGQEDFamKkEJEDBYfoAAgYyAwcpUJSgBAgbLDxAgkBEwWJmqBCVAwGD5AQIEMgIGK1OVoAQIGCw/QIBARsBgZaoSlACBB1YxAJfjJb2jAAAAAElFTkSuQmCC" };
 
-function showDetails(item){
-    productName.innerHTML = item["name"];
-    productPrice.innerHTML = "price: " +  item["price"];
-    while(productDetails.firstChild) productDetails.removeChild(productDetails.firstChild);
-    item["details"].forEach(element => {
-       let newItem =  document.createElement('li');
-       newItem.innerHTML = element;
-       productDetails.appendChild(newItem);
-    });
-    loadedProduct = item;
+function showDetails(itemCode){
+    let selectedRegio = document.getElementById("regioSelect");
+    let regio = Regios.getRegio(selectedRegio.options[selectedRegio.selectedIndex].text.toLowerCase());
+
+    for (let index in regio.items)
+    {
+        if (index == itemCode)
+        {
+            productName.innerHTML = regio.items[index].name;
+            productPrice.innerHTML = "Prijs: €" + regio.items[index].price + ".-";
+            while(productDetails.firstChild)
+            {
+                productDetails.removeChild(productDetails.firstChild);
+            }
+
+            regio.items[index].details.forEach(element => {
+                let newItem =  document.createElement('li');
+                newItem.innerHTML = element;
+                productDetails.appendChild(newItem);
+            });
+
+            loadedProduct = regio.items[index];
+
+
+        }
+    }
+
+
+    // productName.innerHTML = item["name"];
+    // productPrice.innerHTML = "price: " +  item["price"];
+    // while(productDetails.firstChild) productDetails.removeChild(productDetails.firstChild);
+    // item["details"].forEach(element => {
+    //    let newItem =  document.createElement('li');
+    //    newItem.innerHTML = element;
+    //    productDetails.appendChild(newItem);
+    // });
+    // loadedProduct = item;
 }
 
-function loadItem(item){
-    showDetails(item);
-    loadPicture(item);
+function loadItem(itemCode){
+    //get number from itemCode
+    let reggex = /\d+/g;
+    itemCode = parseInt(itemCode.match(reggex)[0]);
+    showDetails(itemCode);
+    loadPicture(itemCode);
 }
 
 function loadPicture(item){
-    let dataURL = item["picture"]
+    let selectedRegio = document.getElementById("regioSelect");
+    let regio = Regios.getRegio(selectedRegio.options[selectedRegio.selectedIndex].text.toLowerCase());
+    let dataURL;
+    for (let index in regio.items)
+    {
+        if (index == item)
+        {
+            dataURL = regio.items[index].picture;
+        }
+    }
+
+
     if(!dataURL == ""){
         let img = new Image();
-        img.onload = function(){
+            img.onload = function(){
             canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
             canvas.getContext("2d").drawImage(img, 0, 0);
         } 

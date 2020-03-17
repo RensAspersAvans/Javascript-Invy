@@ -37,9 +37,9 @@
                         <div id="form-popup">
                             <div id="creationForm"class="formcontainer">
                                 <label for="name">Naam</label>
-                                <input type="text" placeholder="productnaam" name="name">
+                                <input type="text" placeholder="productnaam" name="name" id="newName">
                                 <label for="price">Prijs</label>
-                                <input type="number" placeholder="prijs" name="price"></input>
+                                <input type="number" placeholder="prijs" name="price" id="newPrice"></input>
                                 <label for="detail">eigenschappen:</label>
                                 <textarea placeholder="eigenschap" id="detailArea"></textarea>
                                 <button id="previous" type="button"><</button>
@@ -65,8 +65,9 @@
                         
                         </ul>
                         <div id="no-img">
-                            <label>Afbeelding toevoegen:</label>
+                            
                             <input type="file" id="getPicture" />
+                            <label for="getPicture" id="picture-label">Afbeelding toevoegen:</label>
                         </div>
                         <div id="product-img-div">
                             <canvas id="product-img">

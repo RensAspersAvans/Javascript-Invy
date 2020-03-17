@@ -94,12 +94,28 @@ body {
     flex-direction: column;
   }
 
-  #product-img-div{
-      //display: none;
-  }
 
 #no-img{
-    //display: none;
+    display: flow-root;
+}
+
+#getPicture{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    
+}
+
+#picture-label{
+    font-size: 1.2em;
+    font-weight: 300;
+    color: white;
+    background-color: red;
+    display: inline-block;
+    padding: 10;
 }
 
   

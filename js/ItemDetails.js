@@ -2,6 +2,14 @@ const productName = document.getElementById("product-name");
 const productPrice = document.getElementById("product-price");
 const productDetails = document.getElementById("product-details-list");
 const canvas = document.getElementById("product-img");
+const imgUploadBtn = document.getElementById("no-img");
+const imgDiv = document.getElementById("product-img-div");
+const ctx = canvas.getContext("2d");
+let prevX = 0;
+let currX = 0;
+let prevY = 0;
+let currY = 0;
+let drawActive = false;
 
 let loadedProduct;
 
@@ -35,10 +43,7 @@ function loadPicture(item){
             canvas.getContext("2d").drawImage(img, 0, 0);
         } 
         img.src = dataURL;
-
-        //blobToDataURL(blob, function(dataurl){
-        //    img.src = dataurl;
-        //});
+        imgUploadBtn.style.display = "none";
     }
 }
 
@@ -50,7 +55,7 @@ function handleFileSelect(evt) {
     }
 
     var reader = new FileReader();
-    reader.onload = (function(theFile) {
+    reader.onload = (function() {
       return function(e) {
         let buffer = new Image();
         buffer.src = e.target.result;
@@ -58,33 +63,62 @@ function handleFileSelect(evt) {
             canvas.width = buffer.width;
 	        canvas.height = buffer.height;
             canvas.getContext("2d").drawImage(buffer, 0, 0);
-            loadedProduct["picture"] = canvas.toDataURL("image/png");
+            saveImage();
             loadPicture(loadedProduct);
         }
-        
       };
     })(newFile);
     reader.readAsDataURL(newFile);
 }
 
-function dataURItoBlob(dataURI) {
-    var byteString = atob(dataURI.split(',')[1]);
-    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-    var ab = new ArrayBuffer(byteString.length);
-    var ia = new Uint8Array(ab);
-    for (var i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ab], {type: mimeString});
-
-
+function initDrawing(){
+    canvas.addEventListener("mousemove", function(e){mouseMove(e)}, false);
+    canvas.addEventListener("mousedown", function(e){mouseDown(e)}, false);
+    canvas.addEventListener("mouseup", mouseUp, false);
+    currX = 0;
+    currY = 0;
+    prevX = 0;
+    prevY = 0;
 }
 
-function blobToDataURL(blob, callback) {
-    var a = new FileReader();
-    a.onload = function(e) {callback(e.target.result);}
-    a.readAsDataURL(blob);
+function mouseMove(e){
+    if(drawActive){
+        prevX = currX;
+        prevY = currY;
+        currX = e.clientX - canvas.getBoundingClientRect().left;
+        currY = e.clientY - canvas.getBoundingClientRect().top;
+        draw();
+    }
+}
+
+function draw(){
+    ctx.beginPath();
+    ctx.moveTo(prevX, prevY);
+    ctx.lineTo(currX, currY);
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.closePath();
+    saveImage();
+}
+
+function mouseDown(e){
+    prevX = currX;
+    prevY = currY;
+    currX = e.clientX - canvas.getBoundingClientRect().left;
+    currY = e.clientY - canvas.getBoundingClientRect().top;
+    drawActive = true;
+}
+
+function mouseUp(){
+    drawActive = false;
+}
+
+function saveImage(){
+    loadedProduct["picture"] = canvas.toDataURL("image/png");
 }
 
 document.getElementById('getPicture').addEventListener('change', handleFileSelect, false);
 showDetails(dummy1);
+
+initDrawing();

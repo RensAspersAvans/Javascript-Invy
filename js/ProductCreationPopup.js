@@ -50,7 +50,16 @@ function previousDetail(){
 
 function saveForm(event){
     
-    if(false){
+    if(document.getElementById("newName").value == ""){
+        window.alert("Vul een productnaam in!");
+        return;
+    }
+    else if(document.getElementById("newPrice").value == ""){
+        window.alert("Vul een prijs in!");
+        return;
+    }
+    else if(document.getElementById("newPrice").value <= 0){
+        window.alert("Prijs moet hoger zijn dan 0!");
         return;
     }
     else{
@@ -98,5 +107,4 @@ function closeForm(){
     details = [];
     detailIndex = 0;
     detailArea.value= null;
-
 }

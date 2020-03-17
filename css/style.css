@@ -93,3 +93,13 @@ body {
     display: flex;
     flex-direction: column;
   }
+
+  #product-img-div{
+      //display: none;
+  }
+
+#no-img{
+    //display: none;
+}
+
+  

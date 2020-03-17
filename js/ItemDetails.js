@@ -86,3 +86,4 @@ function blobToDataURL(blob, callback) {
 }
 
 document.getElementById('getPicture').addEventListener('change', handleFileSelect, false);
+loadItem(dummy2);

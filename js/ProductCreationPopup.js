@@ -90,6 +90,7 @@ function toJSON(){
         element.value=null;
     }
     obj["details"] = detailsArray;
+    obj["picture"] = "";
     return JSON.stringify( obj );
 }
 

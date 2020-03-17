@@ -219,12 +219,8 @@ class WareHouse
     static resetSelected()
     {
         let oldItemList = document.getElementById("selected-products");
-        while (oldItemList.lastElementChild) {
-            oldItemList.removeChild(oldItemList.lastElementChild);
-        }
-        var node = document.createElement("p");
-        node.innerHTML = "leeg";
-        document.getElementById("selected-products").append(node);
+        emptySelected();
+        
     }
 
 

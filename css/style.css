@@ -118,4 +118,9 @@ body {
     padding: 10;
 }
 
+#product-img-div{
+    max-width: fit-content;
+    min-width: fit-content;
+}
+
   

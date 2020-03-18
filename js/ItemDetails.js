@@ -126,7 +126,7 @@ function draw(){
     ctx.moveTo(prevX, prevY);
     ctx.lineTo(currX, currY);
     ctx.strokeStyle = "black";
-    ctx.lineWidth = canvas.width/100;
+    ctx.lineWidth = 3;
     ctx.stroke();
     ctx.closePath();
     saveImage();

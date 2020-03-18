@@ -46,32 +46,23 @@ function loadItem(itemCode){
     let reggex = /\d+/g;
     itemCode = parseInt(itemCode.match(reggex)[0]);
     showDetails(itemCode);
-    loadPicture(itemCode);
+    loadPicture();
 }
 
-function loadPicture(item){
-    let selectedRegio = document.getElementById("regioSelect");
-    let regio = Regios.getRegio(selectedRegio.options[selectedRegio.selectedIndex].text.toLowerCase());
-    let dataURL;
-    for (let index in regio.items)
-    {
-        if (index == item)
-        {
-            dataURL = regio.items[index].picture;
-        }
-    }
-
-    if(!dataURL == ""){
+function loadPicture(){
+    if(loadedProduct.picture != ""){
         loadedDiv.style.display = "block";
         let img = new Image();
             img.onload = function(){
-            canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
-            canvas.width = img.width;
-            canvas.height = img.height;
-            canvas.getContext("2d").drawImage(img, 0, 0);
-            initDrawing();
+                canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+                canvas.width = img.width;
+                canvas.height = img.height;
+                canvas.getContext("2d").drawImage(img, 0, 0);
+                initDrawing();
         } 
-        img.src = dataURL;
+        img.src = loadedProduct.picture;
+    }else{
+        loadedDiv.style.display = "none";
     }
 }
 
@@ -94,7 +85,7 @@ function handleFileSelect(evt) {
             canvas.getContext("2d").drawImage(buffer, 0, 0);
             initDrawing();
             saveImage();
-            loadPicture(loadedProduct);
+            loadPicture();
         }
       };
     })(newFile);

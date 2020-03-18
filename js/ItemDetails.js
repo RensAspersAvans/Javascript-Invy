@@ -55,9 +55,11 @@ function loadPicture(){
         let img = new Image();
             img.onload = function(){
                 canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
-                canvas.width = img.width;
-                canvas.height = img.height;
-                canvas.getContext("2d").drawImage(img, 0, 0);
+                let sizer = Math.min((500/img.width),(500/img.height));
+                canvas.width = 500;
+                canvas.height = 500;
+                
+                canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width*sizer, img.height*sizer);
                 initDrawing();
         } 
         img.src = loadedProduct.picture;
@@ -79,10 +81,12 @@ function handleFileSelect(evt) {
         canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
         let buffer = new Image();
         buffer.src = e.target.result;
-        buffer.onload = function(){            
-            canvas.width = buffer.width;
-            canvas.height = buffer.height;
-            canvas.getContext("2d").drawImage(buffer, 0, 0);
+        buffer.onload = function(){ 
+            let sizer = Math.min((500/buffer.width),(500/buffer.height));         
+            canvas.width = 500;
+            canvas.height = 500;
+            
+            canvas.getContext("2d").drawImage(buffer, 0, 0, buffer.width, buffer.height, 0, 0, buffer.width*sizer,  buffer.height*sizer);
             initDrawing();
             saveImage();
             loadPicture();

@@ -58,7 +58,6 @@ function loadPicture(){
                 let sizer = Math.min((500/img.width),(500/img.height));
                 canvas.width = 500;
                 canvas.height = 500;
-                
                 canvas.getContext("2d").drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width*sizer, img.height*sizer);
                 initDrawing();
         } 

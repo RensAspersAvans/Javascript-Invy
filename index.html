@@ -8,12 +8,12 @@
     <script type="text/javascript" src="json/warehouses.js"></script>
     <title>Eindopdracht</title> 
 </head>
-<body class="">
+<body>
    <div class="container-fluid">
        <div class="row d-flex justify-content-between dropzones">
            <div class="col-sm-2 bg-light rounded" id="menubar">
                <!-- Begin regio's -->
-                <div class="col mt-2 p-2 bg-white rounded" id="regio">
+                <div class="col mt-2 p-2 mb-3 bg-white shadow rounded" id="regio">
                     <div class="h5">
                         Regio's
                     </div>
@@ -23,66 +23,77 @@
                             <option value="regio2">Tierlatijn</option>
                             <option value="regio3">Decoratie</option>
                         </select>
-                        <button class="mt-2 btn btn-info" onclick="switchInterface()" class="btn btn-primary">kies</button>
+                        <button class="mt-2 btn btn-success" onclick="switchInterface()" class="btn btn-primary">kies</button>
                       </div>
                 </div>
             <!-- Begin producten -->
-                <div class="col mt-2 p-2 bg-white rounded">
+                <div class="col mt-2 p-2 mb-3 bg-white rounded shadow">
                     <div class="h5">
                         Producten
                     </div>
 
-                        <button class="btn btn-info mb-2 w-100" id="open-create-popup">Product aanmaken</button>
+                        <button class="btn btn-secondary mb-2 w-100" id="open-create-popup">Product aanmaken</button>
 
                         <div id="form-popup">
-                            <div id="creationForm"class="formcontainer">
-                                <label for="name">Naam</label>
-                                <input type="text" placeholder="productnaam" name="name" id="newName">
-                                <label for="price">Prijs</label>
-                                <input type="number" placeholder="prijs" name="price" id="newPrice"></input>
-                                <label for="detail">eigenschappen:</label>
-                                <textarea placeholder="eigenschap" id="detailArea"></textarea>
-                                <button id="previous" type="button"><</button>
-                                <button id="next" type="button">+</button>
-                                
-                                <br>
-                                <button type="button" class="form-button" id="saveForm">Product aanmaken</button>
-                                <button type="button" class="form-button" id="close-create-popup">Product annuleren</button>
+                            <div id="creationForm">
+                                <div class="formcontainer d-flex flex-column">
+                                    <label for="name">Naam</label>
+                                    <input type="text" placeholder="productnaam" name="name" id="newName">
+                                    <label for="price">Prijs</label>
+                                    <input type="number" placeholder="prijs" name="price" id="newPrice"></input>
+                                    <label for="detail">eigenschappen:</label>
+                                    <textarea placeholder="eigenschap" id="detailArea"></textarea>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-secondary" id="previous" type="button"><</button>
+                                        <button class="btn btn-success" id="next" type="button">+</button>
+                                    </div>
+                                    <br>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-danger m-2" type="button" class="form-button" id="close-create-popup">Annuleren</button>
+                                        <button class="btn btn-success m-2" type="button" class="form-button" id="saveForm">Toevoegen</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        </div>
-                        <div class="bg-white draggable-items" id="products"></div>
 
+                        <div class="bg-white draggable-items" id="products"></div>
+                </div>
             <!-- Begin geselecteerde producten -->
-                <div class="col mt-2 p-2" id="selected-products">
+                <div class="col mt-2 p-2 mb-3 bg-white rounded shadow" id="selected-products">
                     <div class="h5">
-                        Geselecteerde Producten
+                        Geselecteerd
                     </div>
                     <div id="product-details">
                         <h4 id="product-name"></h4>
-                        <p id="product-price"></p>
+                        <p id="product-price">leeg</p>
                         <ul id="product-details-list">
                         
                         </ul>
                         <div id="no-img">                           
                             <input type="file" id="getPicture" />
-                            <label for="getPicture" id="picture-label">Afbeelding toevoegen:</label>
+                            <label class="btn btn-secondary w-100" for="getPicture" id="picture-label">Foto uploaden</label>
                         </div>
-                        <div id="loaded-img-div">
-                            <button id="open-canvas">open image</button>
-                            <div id="product-img-div">                          
-                                <canvas id="product-img">
-                                
-                                </canvas>
-                                <button id="close-canvas">close image</button>
+
+                            <div id="loaded-img-div">
+                                <button class="btn btn-success w-100" id="open-canvas">Foto bekijken</button>
+                                <div id="image-popup">
+                                    <div id="product-img-div">
+                                        <canvas id="product-img">
+
+                                        </canvas>
+                                        <button class="btn btn-danger w-100" id="close-canvas">close image</button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        
+
+
                     </div>
                 </div>
            <!-- Begin weer -->
-           <div class="col mt-2 p-2 bg-white rounded" id="weather">
+           <div class="col mt-2 p-2 bg-white rounded shadow" id="weather">
                <div class="h5">
+                   Weer
+               </div>
                    <div class="search">
                        <input class="w-100 mb-2" type="text" id="weather-search" placeholder="stadnaam">
                        <a class="btn btn-info w-100" id="search-button" href="#weather-response">zoeken</a>
@@ -95,14 +106,13 @@
                        </div>
                        <div id="humidity" class="col text-center"></div>
                    </div>
-               </div>
-           </div>
+                </div>
            </div>
            <!-- Begin magazijn -->
            <div class="col-10 p-2" id="magazijn">
 
             <!-- Big grid begint hier -->
-           <div class="bg-white rounded" id="grid-holder">
+           <div class="bg-white rounded shadow" id="grid-holder">
                <div class="h5 pt-2 pl-4 mx-auto">
                    Magazijn
                </div>

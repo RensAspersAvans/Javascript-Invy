@@ -30,18 +30,23 @@ body {
 	background-color: rgba(102, 153, 153, 0.5);
 }
 
+#image-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(102, 153, 153, 0.5);
+}
+
 .formcontainer{
 	position: fixed;
 	top:30%;
 	left:40%;
-	max-width: 300px;
 	padding:4%;
 	background-color: white;
-	border: 3px solid black;
-}
-
-.form-button{
-	margin: 10px;
 }
 
 #stockroom{
@@ -109,28 +114,19 @@ body {
     
 }
 
-#picture-label{
-    font-size: 1.2em;
-    font-weight: 300;
-    color: white;
-    background-color: red;
-    display: inline-block;
-    padding: 10;
-}
-
 #product-img-div{
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    top: 0;
-	left: 0;
     position: fixed;
-    margin: auto;
+    z-index: 10;
+    display: none;
+    flex-direction: column;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     background-color: rgba(102, 153, 153, 0.5);
 }
 
 #loaded-img-div{
-    display: hidden;
+    display: none;
 }
 
   

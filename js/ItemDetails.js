@@ -167,7 +167,7 @@ function emptySelected(){
     imgUploadBtn.style.display = "none";
 }
 
-document.getElementById("open-canvas").addEventListener('click', function(e){imgDiv.style.display = "block";}, false);
-document.getElementById("close-canvas").addEventListener('click', function(e){imgDiv.style.display = "none";}, false);
+document.getElementById("open-canvas").addEventListener('click', function(e){imgDiv.style.display = "flex"; document.getElementById("image-popup").style.display = "block"}, false);
+document.getElementById("close-canvas").addEventListener('click', function(e){imgDiv.style.display = "none"; document.getElementById("image-popup").style.display = "none"}, false);
 document.getElementById('getPicture').addEventListener('change', handleFileSelect, false);
 init();

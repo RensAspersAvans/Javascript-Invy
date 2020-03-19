@@ -19,11 +19,11 @@ export class Regios
 
     static addRegio(regio) {
         const storedRegios = this.getRegios();
-
         for (let i in storedRegios)
         {
             if (storedRegios[i].name == regio.name)
             {
+
                 storedRegios.splice(i, 1);
             }
         }

@@ -69,7 +69,7 @@ window.onload = function() {
         clothing.items = [];
         Regios.addRegio(clothing);
         tierlantin = new WareHouse("tierlatijn", null, null);
-        tierlantin.map = tierlantin;
+        tierlantin.map = tierlatinMap;
         tierlantin.items = [];
         Regios.addRegio(tierlantin);
         decoration = new WareHouse("decoratie", null, null);

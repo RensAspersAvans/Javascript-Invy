@@ -1,6 +1,7 @@
 import { switchInterface} from "./Initialize";
 import { Movable } from "../view/Movable";
 import { ItemDetails} from "../view/ItemDetails";
+import { ProductCreationPopup } from "../view/ProductCreationPopup";
 
 //region SelectRegio
 document.getElementById('chooseRegio').addEventListener('click', switchInterface);
@@ -46,6 +47,15 @@ dropzones.addEventListener('drop', (e) => {
 dropzones.addEventListener('dragleave', (e) => {
     dragAndDrop.DragLeave(e);
 });
+//endregion
+
+//region productcreation
+const productCreationPopup = new ProductCreationPopup([], 0);
+document.getElementById("open-create-popup").addEventListener("click", productCreationPopup.OpenForm);
+document.getElementById("close-create-popup").addEventListener("click", productCreationPopup.CloseForm);
+document.getElementById("saveForm").addEventListener("click", productCreationPopup.SaveForm);
+document.getElementById("previous").addEventListener("click", productCreationPopup.PreviousDetail);
+document.getElementById("next").addEventListener("click", productCreationPopup.NextOrNewDetail);
 //endregion
 
 

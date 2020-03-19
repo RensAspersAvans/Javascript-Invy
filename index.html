@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="json/warehouses.js"></script>
     <title>Eindopdracht</title> 
 </head>
 <body>
@@ -23,7 +22,7 @@
                             <option value="regio2">Tierlatijn</option>
                             <option value="regio3">Decoratie</option>
                         </select>
-                        <button class="mt-2 btn btn-success" onclick="switchInterface()" class="btn btn-primary">kies</button>
+                        <button class="mt-2 btn btn-success" id="chooseRegio">kies</button>
                       </div>
                 </div>
             <!-- Begin producten -->
@@ -120,11 +119,7 @@
            </div>
        </div>
    </div>
-   <script src="js/storage.js"></script>
-   <script src="js/build.js"></script>
-   <script src="js/dragAndDrop.js"></script>
-   <script src="js/weatherAPI.js"></script>
-   <script src="js/ProductCreationPopup.js"></script>
-   <script src="js/ItemDetails.js"></script>
+
+   <script src="dist/bundle.js"></script>
 </body>
 </html>

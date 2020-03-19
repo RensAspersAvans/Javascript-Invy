@@ -1,0 +1,24 @@
+{
+  "name": "javascript-invy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "develop": "webpack --mode development --watch",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RensAspersAvans/Javascript-Invy.git"
+  },
+  "author": "rens en joery",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RensAspersAvans/Javascript-Invy/issues"
+  },
+  "homepage": "https://github.com/RensAspersAvans/Javascript-Invy#readme",
+  "devDependencies": {
+    "webpack": "^4.42.0"
+  }
+}

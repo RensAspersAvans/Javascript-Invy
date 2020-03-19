@@ -1,14 +1,16 @@
 import {Regios} from "../model/Regios";
 import {WareHouse} from "../model/Warehouse";
+import {ItemDetails} from "../view/ItemDetails";
 
 export class Movable
 {
-    constructor(el, currentItem, currentClasslist, currentProduct)
+    constructor(el, currentItem, currentClasslist, currentProduct, itemDetailShower)
     {
         this.el = el;
         this.currentItem = currentItem;
         this.currentClasslist = currentClasslist;
         this.currentProduct = currentProduct;
+        this.ItemDetails = itemDetailShower;
     }
 
     ClickItem(e)
@@ -17,7 +19,7 @@ export class Movable
         {
             if (/[a-z]\d/.test(e.target.classList[index]))
             {
-                loadItem(e.target.classList[index])
+                ItemDetails.LoadItem(e.target.classList[index])
                 return;
             }
         }

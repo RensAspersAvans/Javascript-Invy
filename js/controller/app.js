@@ -1,5 +1,6 @@
 import { switchInterface} from "./Initialize";
 import { Movable } from "../view/Movable";
+import { ItemDetails} from "../view/ItemDetails";
 
 //region SelectRegio
 document.getElementById('chooseRegio').addEventListener('click', switchInterface);
@@ -32,6 +33,19 @@ dropzones.addEventListener('drop', (e) => {
 dropzones.addEventListener('dragleave', (e) => {
     dragAndDrop.DragLeave(e);
 });
+//endregion
+//region ItemDetails
+const ItemDetailsShower = new ItemDetails(document.getElementById('chooseRegio').innerHTML);
+const imgDiv = document.getElementById("product-img-div");
+document.getElementById("open-canvas").addEventListener('click', function(e){
+    imgDiv.style.display = "flex";
+    document.getElementById("image-popup").style.display = "block"}, false);
+document.getElementById("close-canvas").addEventListener('click', function(e){
+    imgDiv.style.display = "none";
+    document.getElementById("image-popup").style.display = "none"}, false);
+document.getElementById('getPicture').addEventListener('change', function(e){
+    ItemDetailsShower.HandleFileSelect(e);
+}, false);
 //endregion
 
 

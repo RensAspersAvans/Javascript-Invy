@@ -19,7 +19,7 @@ export class Movable
         {
             if (/[a-z]\d/.test(e.target.classList[index]))
             {
-                ItemDetails.LoadItem(e.target.classList[index])
+                this.ItemDetails.LoadItem(e.target.classList[index]);
                 return;
             }
         }

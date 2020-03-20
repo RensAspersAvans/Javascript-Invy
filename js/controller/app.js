@@ -7,7 +7,7 @@ import { ProductCreationPopup } from "../view/ProductCreationPopup";
 document.getElementById('chooseRegio').addEventListener('click', switchInterface);
 //endregion
 //region ItemDetails
-const ItemDetailsShower = new ItemDetails(document.getElementById('chooseRegio').innerHTML);
+const ItemDetailsShower = new ItemDetails();
 const imgDiv = document.getElementById("product-img-div");
 document.getElementById("open-canvas").addEventListener('click', function(e){
     imgDiv.style.display = "flex";

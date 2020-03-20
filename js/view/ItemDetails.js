@@ -11,14 +11,14 @@ const ctx = canvas.getContext("2d");
 
 export class ItemDetails
 {
-    constructor(selectedRegio) {
+    constructor() {
         this.prevX = 0;
         this.currX = 0;
         this.prevY = 0;
         this.currY = 0;
         this.drawActive = false;
         this.productCode = null;
-        this.selectedRegio = selectedRegio;
+        this.selectedRegio = document.getElementById("regioSelect").options[document.getElementById("regioSelect").selectedIndex].text.toLowerCase();
         this.regio = null;
         this.loadedProduct = null;
         if(this.loadedProduct == null){
@@ -28,7 +28,7 @@ export class ItemDetails
     }
 
     ShowDetails(itemCode){
-        this.regio = Regios.getRegio(this.selectedRegio.options[this.selectedRegio.selectedIndex].text.toLowerCase());
+        this.regio = Regios.getRegio(this.selectedRegio);
         this.productCode = itemCode;
         this.loadedProduct = this.regio.items[itemCode];
         productName.innerHTML = this.loadedProduct.name;

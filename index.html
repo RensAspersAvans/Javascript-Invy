@@ -37,10 +37,18 @@
                             <div id="creationForm">
                                 <div class="formcontainer d-flex flex-column">
                                     <label for="name">Naam</label>
-                                    <input type="text" placeholder="productnaam" name="name" id="newName">
-                                    <label for="price">Prijs</label>
-                                    <input type="number" placeholder="prijs" name="price" id="newPrice"></input>
-                                    <label for="detail">eigenschappen:</label>
+                                    <input type="text" placeholder="productnaam" name="name" id="name">
+                                    <label for="buyprice">Inkoopprijs</label>
+                                    <input type="number" placeholder="inkoopprijs" name="buyprice" id="buyprice"></input>
+                                    <label for="sellprice">Verkoopprijs ex btw</label>
+                                    <input type="number" placeholder="verkoopprijs ex btw" name="sellprice" id="sellprice"></input>
+                                    <label for="sellpricebtw">Verkooprijs inc btw</label>
+                                    <input type="number" placeholder="Verkoopprijs inc btw" name="sellpricebtw" id="sellpricebtw" readonly></input>
+                                    <label for="stock">Voorraad</label>
+                                    <input type="number" placeholder="Voorraad" name="stock" id="stock"></input>
+                                    <label for="minimumstock">Minimum voorraad</label>
+                                    <input type="number" placeholder="Minimum voorraad" name="minimumstock" id="minimumstock"></input>
+                                    <label for="detailArea">eigenschappen:</label>
                                     <textarea placeholder="eigenschap" id="detailArea"></textarea>
                                     <div class="d-flex justify-content-between">
                                         <button class="btn btn-secondary" id="previous" type="button"><</button>

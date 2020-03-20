@@ -51,18 +51,18 @@ export class ItemDetails
         //get number from itemCode
         let reggex = /\d+/g;
         itemCode = parseInt(itemCode.match(reggex)[0]);
-        this.ShowDetails(itemCode);
-        this.LoadPicture();
+        GlobalItemDetailShower.ShowDetails(itemCode);
+        GlobalItemDetailShower.LoadPicture();
     }
 
     LoadPicture(){
-        if(this.loadedProduct.picture != ""){
+        if(GlobalItemDetailShower.loadedProduct.picture != ""){
             loadedDiv.style.display = "block";
             let img = new Image();
                 img.onload = function(){
                     canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
-                    this.LoadImgOnCanvas(img);
-                    this.InitDrawing();
+                    GlobalItemDetailShower.LoadImgOnCanvas(img);
+                    GlobalItemDetailShower.InitDrawing();
             }
             img.src = this.loadedProduct.picture;
         }else{
@@ -90,10 +90,10 @@ export class ItemDetails
             let buffer = new Image();
             buffer.src = e.target.result;
             buffer.onload = function(){
-                this.LoadImgOnCanvas();
-                this.InitDrawing();
-                this.SaveImage();
-                this.LoadPicture();
+                GlobalItemDetailShower.LoadImgOnCanvas(buffer);
+                GlobalItemDetailShower.InitDrawing();
+                GlobalItemDetailShower.SaveImage();
+                GlobalItemDetailShower.LoadPicture();
             }
           };
         })(newFile);
@@ -101,52 +101,52 @@ export class ItemDetails
     }
 
     InitDrawing(){
-        canvas.addEventListener("mousemove", function(e){this.MouseMove(e)}, false);
-        canvas.addEventListener("mousedown", function(e){this.MouseDown(e)}, false);
-        canvas.addEventListener("mouseup", this.MouseUp, false);
-        this.currX = 0;
-        this.currY = 0;
-        this.prevX = 0;
-        this.prevY = 0;
+        canvas.addEventListener("mousemove", function(e){GlobalItemDetailShower.MouseMove(e)}, false);
+        canvas.addEventListener("mousedown", function(e){GlobalItemDetailShower.MouseDown(e)}, false);
+        canvas.addEventListener("mouseup", GlobalItemDetailShower.MouseUp, false);
+        GlobalItemDetailShower.currX = 0;
+        GlobalItemDetailShower.currY = 0;
+        GlobalItemDetailShower.prevX = 0;
+        GlobalItemDetailShower.prevY = 0;
     }
 
     MouseMove(e){
-        if(this.drawActive){
-            this.prevX = this.currX;
-            this.prevY = this.currY;
-            this.currX = e.clientX - canvas.getBoundingClientRect().left;
-            this.currY = e.clientY - canvas.getBoundingClientRect().top;
-            this.Draw();
+        if(GlobalItemDetailShower.drawActive){
+            GlobalItemDetailShower.prevX = GlobalItemDetailShower.currX;
+            GlobalItemDetailShower.prevY = GlobalItemDetailShower.currY;
+            GlobalItemDetailShower.currX = e.clientX - canvas.getBoundingClientRect().left;
+            GlobalItemDetailShower.currY = e.clientY - canvas.getBoundingClientRect().top;
+            GlobalItemDetailShower.Draw();
         }
     }
 
     Draw(){
         ctx.beginPath();
-        ctx.moveTo(this.prevX, this.prevY);
-        ctx.lineTo(this.currX, this.currY);
+        ctx.moveTo(GlobalItemDetailShower.prevX, GlobalItemDetailShower.prevY);
+        ctx.lineTo(GlobalItemDetailShower.currX, GlobalItemDetailShower.currY);
         ctx.strokeStyle = "black";
         ctx.lineWidth = 3;
         ctx.stroke();
         ctx.closePath();
-        this.SaveImage();
+        GlobalItemDetailShower.SaveImage();
     }
 
     MouseDown(e){
-        this.prevX = this.currX;
-        this.prevY = this.currY;
-        this.currX = e.clientX - canvas.getBoundingClientRect().left;
-        this.currY = e.clientY - canvas.getBoundingClientRect().top;
-        this.drawActive = true;
+        GlobalItemDetailShower.prevX = GlobalItemDetailShower.currX;
+        GlobalItemDetailShower.prevY = GlobalItemDetailShower.currY;
+        GlobalItemDetailShower.currX = e.clientX - canvas.getBoundingClientRect().left;
+        GlobalItemDetailShower.currY = e.clientY - canvas.getBoundingClientRect().top;
+        GlobalItemDetailShower.drawActive = true;
     }
 
     MouseUp(){
-        this.drawActive = false;
+        GlobalItemDetailShower.drawActive = false;
     }
 
     SaveImage(){
-        this.loadedProduct.picture = canvas.toDataURL("image/png");
-        this.regio.items[this.productCode] = this.loadedProduct;
-        Regios.updateRegio(this.regio);
+        GlobalItemDetailShower.loadedProduct.picture = canvas.toDataURL("image/png");
+        GlobalItemDetailShower.regio.items[GlobalItemDetailShower.productCode] = GlobalItemDetailShower.loadedProduct;
+        Regios.updateRegio(GlobalItemDetailShower.regio);
     }
 
     EmptySelected(){

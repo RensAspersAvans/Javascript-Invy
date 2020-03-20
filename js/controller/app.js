@@ -8,6 +8,7 @@ document.getElementById('chooseRegio').addEventListener('click', switchInterface
 //endregion
 //region ItemDetails
 const ItemDetailsShower = new ItemDetails();
+window.GlobalItemDetailShower = ItemDetailsShower;
 const imgDiv = document.getElementById("product-img-div");
 document.getElementById("open-canvas").addEventListener('click', function(e){
     imgDiv.style.display = "flex";

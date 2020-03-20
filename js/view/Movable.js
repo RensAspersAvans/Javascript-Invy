@@ -29,7 +29,7 @@ export class Movable
     {
         e.dataTransfer.dropEffect = 'move';
         this.el = e.target.cloneNode(true)
-        el.removeAttribute('draggable');
+        this.el.removeAttribute('draggable');
     }
 
     DragOver(e)

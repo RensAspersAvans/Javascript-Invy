@@ -50,16 +50,10 @@ dropzones.addEventListener('dragleave', (e) => {
 //endregion
 
 //region productcreation
-const productCreationPopup = new ProductCreationPopup([], 0);
+const productCreationPopup = new ProductCreationPopup();
 document.getElementById("open-create-popup").addEventListener("click", productCreationPopup.OpenForm);
 document.getElementById("close-create-popup").addEventListener("click", productCreationPopup.CloseForm);
 document.getElementById("saveForm").addEventListener("click", productCreationPopup.SaveForm);
 document.getElementById("previous").addEventListener("click", productCreationPopup.PreviousDetail);
 document.getElementById("next").addEventListener("click", productCreationPopup.NextOrNewDetail);
 //endregion
-
-
-
-
-
-

@@ -53,6 +53,7 @@ dropzones.addEventListener('dragleave', (e) => {
 const productCreationPopup = new ProductCreationPopup();
 document.getElementById("open-create-popup").addEventListener("click", productCreationPopup.OpenForm);
 document.getElementById("close-create-popup").addEventListener("click", productCreationPopup.CloseForm);
+document.getElementById("sellprice").addEventListener("input", function(e){productCreationPopup.UpdateBTW(e)});
 document.getElementById("saveForm").addEventListener("click", productCreationPopup.SaveForm);
 document.getElementById("previous").addEventListener("click", productCreationPopup.PreviousDetail);
 document.getElementById("next").addEventListener("click", productCreationPopup.NextOrNewDetail);

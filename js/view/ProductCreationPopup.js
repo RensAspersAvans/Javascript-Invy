@@ -102,4 +102,11 @@ export class ProductCreationPopup {
         detailArea.value = null;
     }
 
+    UpdateBTW(e){
+        let noBTW = e.target.value;
+        let BTW = noBTW * 1.12;
+        BTW = BTW.toFixed(2);
+        document.getElementById("sellpricebtw").value = BTW;
+    }
+
 }

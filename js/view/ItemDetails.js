@@ -35,6 +35,8 @@ export class ItemDetails
             imgUploadBtn.style.display = "none";
         }
         this.EmptySelected();
+        window.GlobalProductShowIndex = 0;
+        window.GlobalProductShowArray = [];
     }
 
     ShowDetails(itemCode){
@@ -52,6 +54,9 @@ export class ItemDetails
                 }
             }
         }
+        GlobalProductShowIndex = 0;
+        GlobalProductShowArray = this.loadedProduct.details;
+
         imgUploadBtn.style.display = "flow-root";
     }
 

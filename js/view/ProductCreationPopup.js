@@ -45,6 +45,8 @@ export class ProductCreationPopup {
 
     SaveForm(event) {
 
+        //TODO: CONTROLLE OP ITEMTYPE
+
         if (document.getElementById("newName").value == "") {
             window.alert("Vul een productnaam in!");
             return;
@@ -63,9 +65,11 @@ export class ProductCreationPopup {
             let elements = form.querySelectorAll("input");
             for (let index = 0; index < elements.length; index++) {
                 let element = elements[index];
-                let name = element.name;
-                let value = element.value;
-                obj [name] = value;
+                if(element.value != ""){
+                    let name = element.name;
+                    let value = element.value;
+                    obj [name] = value;
+                }
                 element.value = null;
             }
             obj["details"] = detailsArray;

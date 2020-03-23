@@ -35,7 +35,7 @@
 
                         <div id="form-popup" class="popup">
                             <div id="creationForm">
-                                <div class="formcontainer d-flex flex-column">
+                                <div class="formcontainer d-flex flex-column" id="step1">
                                     <label for="name">Naam</label>
                                     <input type="text" placeholder="productnaam" name="name" id="name">
                                     <label for="buyprice">Inkoopprijs</label>
@@ -61,9 +61,9 @@
                                     </div>
                                 </div>
                                   <div class="formcontainer">
-                                   <div class="form-group regio1 d-flex flex-column">-->
-                                        <label for="kleur">Kleur</label>-->
-                                        <input type="color" placeholder="kleur" name="color" id="colorinput">-->
+                                   <div class="form-group" id="regio1">
+                                        <label for="kleur">Kleur</label>
+                                        <input type="color" placeholder="kleur" name="color" id="colorinput">
 
                                         <select name="size" id="sizeinput">
                                            <option value="">Maat kiezen</option>
@@ -74,10 +74,10 @@
                                             <option value="4">xl</option>
                                         </select>
                                     </div>
-                                    <div class="form-group regio2">
+                                    <div class="form-group" id="regio2">
                                         <input type="number" placeholder="gewicht" id="weightinput">
                                     </div>
-                                    <div class="form-group regio3 d-flex flex-column">
+                                    <div class="form-group" id="regio3">
                                         <input type="number" placeholder="grootte in cm" id="cminput">
                                         <input type="color" placeholder="kleur" id="decocolorinput">
                                         <input type="number" placeholder="aantal in verpakking" id="amountinput">

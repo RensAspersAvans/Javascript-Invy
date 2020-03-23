@@ -19,9 +19,9 @@ body {
     overflow: scroll;
 }
 
-#form-popup {
+.popup {
 	display: none;
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	height: 100%;

@@ -1,4 +1,5 @@
 import {Regios} from "../model/Regios";
+import {WareHouse} from "../model/Warehouse";
 
 const productName = document.getElementById("product-name");
 const productPrice = document.getElementById("product-price");
@@ -8,6 +9,15 @@ const imgUploadBtn = document.getElementById("no-img");
 const imgDiv = document.getElementById("product-img-div");
 const loadedDiv = document.getElementById("loaded-img-div");
 const ctx = canvas.getContext("2d");
+const name = document.getElementById("details-name");
+const buyprice = document.getElementById("details-buyprice");
+const sellprice = document.getElementById("details-sellprice");
+const btw = document.getElementById("details-sellpricebtw");
+const stock = document.getElementById("details-stock");
+const minimumstock = document.getElementById("details-minimumstock");
+const form = document.getElementById("details-popup");
+const detailArea = document.getElementById("show-detailArea");
+const nextButton = document.getElementById("save-details");
 
 export class ItemDetails
 {
@@ -28,21 +38,10 @@ export class ItemDetails
     }
 
     ShowDetails(itemCode){
+        form.style.display = "block";
         this.regio = Regios.getRegio(this.selectedRegio);
         this.productCode = itemCode;
         this.loadedProduct = this.regio.items[itemCode];
-        productName.innerHTML = this.loadedProduct.name;
-        productPrice.innerHTML = "Prijs: €" + this.loadedProduct.price + ".-";
-        while(productDetails.firstChild)
-        {
-            productDetails.removeChild(productDetails.firstChild);
-        }
-
-        this.loadedProduct.details.forEach(element => {
-            let newItem =  document.createElement('li');
-            newItem.innerHTML = element;
-            productDetails.appendChild(newItem);
-        });
 
         imgUploadBtn.style.display = "flow-root";
     }
@@ -150,13 +149,51 @@ export class ItemDetails
     }
 
     EmptySelected(){
-        productName.innerHTML = "";
-        productPrice.innerHTML = "";
-        while(productDetails.firstChild)
-        {
-            productDetails.removeChild(productDetails.firstChild);
-        }
+
         loadedDiv.style.display = "none";
         imgUploadBtn.style.display = "none";
+    }
+
+    SaveForm(event) {
+
+        if (name.value == "") {
+            window.alert("Vul een productnaam in!");
+            return;
+        } else if (buyprice.value == "" || sellprice.value == "" || stock.value == "") {
+            window.alert("Vul een prijs in!");
+            return;
+        } else if (document.getElementById("newPrice").value <= 0) {
+            window.alert("Prijs moet hoger zijn dan 0!");
+            return;
+        } else {
+            GlobalProductCreationArray[GlobalProductCreationIndex] = detailArea.value;
+            let obj = {};
+            let detailsArray = GlobalProductCreationArray.filter(element => {
+                return element != "";
+            });
+            let elements = form.querySelectorAll("input");
+            for (let index = 0; index < elements.length; index++) {
+                let element = elements[index];
+                let name = element.name;
+                let value = element.value;
+                obj [name] = value;
+                element.value = null;
+            }
+            obj["details"] = detailsArray;
+            obj["picture"] = "";
+            let jsonstr = JSON.stringify(obj);
+            let selectedRegio = document.getElementById("regioSelect");
+            let regio = Regios.getRegio(selectedRegio[selectedRegio.selectedIndex].innerText.toLowerCase());
+
+            regio.items.push(JSON.parse(jsonstr));
+            Regios.updateRegio(regio);
+            WareHouse.showItems();
+            form.style.display = "none";
+            openFormButton.style.display = "block";
+            window.GlobalProductCreationArray = [];
+            window.GlobalProductCreationIndex = 0;
+            detailArea.value = null;
+        }
+
     }
 }

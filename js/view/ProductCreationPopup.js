@@ -104,6 +104,9 @@ export class ProductCreationPopup {
         window.GlobalProductCreationArray = [];
         window.GlobalProductCreationIndex = 0;
         detailArea.value = null;
+        document.getElementById('regio1').style.display = "none";
+        document.getElementById('regio2').style.display = "none";
+        document.getElementById('regio3').style.display = "none";
     }
 
     UpdateBTW(e){
@@ -111,6 +114,27 @@ export class ProductCreationPopup {
         let BTW = noBTW * 1.12;
         BTW = BTW.toFixed(2);
         document.getElementById("sellpricebtw").value = BTW;
+    }
+
+    ShowNextStep()
+    {
+       let selectedRegio = document.getElementById("regioSelect").options[document.getElementById("regioSelect").selectedIndex].text.toLowerCase();
+        document.getElementById("step1").style.display = "none";
+        let element;
+       switch (selectedRegio) {
+           case "kleding":
+               element = document.getElementById("regio1");
+               break;
+           case "tierlatijn":
+               element = document.getElementById("regio2");
+               break;
+           case "decoratie":
+               element = document.getElementById("regio3");
+               break;
+       }
+        element.style.display = "block";
+        element.classList.add("d-flex");
+        element.classList.add("flex-column");
     }
 
 }

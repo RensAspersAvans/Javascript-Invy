@@ -56,7 +56,9 @@ document.getElementById("open-create-popup").addEventListener("click", productCr
 document.getElementById("close-create-popup1").addEventListener("click", productCreationPopup.CloseForm);
 document.getElementById("close-create-popup2").addEventListener("click", productCreationPopup.CloseForm);
 document.getElementById("sellprice").addEventListener("input", function(e){productCreationPopup.UpdateBTW(e)});
-document.getElementById("nextstep").addEventListener("click", productCreationPopup.SaveForm);
+// document.getElementById("nextstep").addEventListener("click", productCreationPopup.SaveForm);
 document.getElementById("previous").addEventListener("click", productCreationPopup.PreviousDetail);
 document.getElementById("next").addEventListener("click", productCreationPopup.NextOrNewDetail);
+document.getElementById("nextstep").addEventListener("click", productCreationPopup.ShowNextStep);
+
 //endregion

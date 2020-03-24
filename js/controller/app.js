@@ -2,6 +2,7 @@ import { switchInterface} from "./Initialize";
 import { Movable } from "../view/Movable";
 import { ItemDetails} from "../view/ItemDetails";
 import { ProductCreationPopup } from "../view/ProductCreationPopup";
+import {WeatherAPI} from "../weatherAPI";
 
 //region SelectRegio
 document.getElementById('chooseRegio').addEventListener('click', switchInterface);
@@ -60,5 +61,12 @@ document.getElementById("sellprice").addEventListener("input", function(e){produ
 document.getElementById("previous").addEventListener("click", productCreationPopup.PreviousDetail);
 document.getElementById("next").addEventListener("click", productCreationPopup.NextOrNewDetail);
 document.getElementById("nextstep").addEventListener("click", productCreationPopup.ShowNextStep);
+
+//endregion
+
+//region WeatherAPI
+const Weather = new WeatherAPI();
+document.getElementById("search-button").addEventListener("click", Weather.FindWeatherDetails);
+document.getElementById("weather-search").addEventListener("keyup", function(e){Weather.CheckEnterPressed(e)});
 
 //endregion

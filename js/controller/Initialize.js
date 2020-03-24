@@ -104,7 +104,6 @@ export function switchInterface()
             break;
     }
     WareHouse.showItems();
-    WareHouse.resetSelected();
 }
 
 

@@ -5,6 +5,12 @@ const openFormButton = document.getElementById("open-create-popup");
 const form = document.getElementById("form-popup");
 const detailArea = document.getElementById("detailArea");
 const nextButton = document.getElementById("next");
+const name = document.getElementById("details-name");
+const buyprice = document.getElementById("details-buyprice");
+const sellprice = document.getElementById("details-sellprice");
+const btw = document.getElementById("details-sellpricebtw");
+const stock = document.getElementById("details-stock");
+const minimumstock = document.getElementById("details-minimumstock");
 
 export class ProductCreationPopup {
 
@@ -47,14 +53,17 @@ export class ProductCreationPopup {
 
         //TODO: CONTROLLE OP ITEMTYPE
 
-        if (document.getElementById("newName").value == "") {
+        if (name.value == "") {
             window.alert("Vul een productnaam in!");
             return;
-        } else if (document.getElementById("newPrice").value == "") {
-            window.alert("Vul een prijs in!");
+        } else if (buyprice.value == "" || sellprice.value == "" || stock.value == "" || minimumstock.value == "") {
+            window.alert("Vul alle waardes in!");
             return;
-        } else if (document.getElementById("newPrice").value <= 0) {
-            window.alert("Prijs moet hoger zijn dan 0!");
+        } else if (buyprice.value <= 0 || sellprice.value <= 0) {
+            window.alert("prijzen moeten hoger zijn dan 0!");
+            return;
+        } else if(stock.value < 0 || minimumstock.value < 0){
+            window.alert("voorraden mogen niet lager dan 0 zijn!");
             return;
         } else {
             GlobalProductCreationArray[GlobalProductCreationIndex] = detailArea.value;

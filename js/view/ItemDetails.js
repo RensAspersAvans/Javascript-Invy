@@ -169,7 +169,6 @@ export class ItemDetails
     }
 
     SaveForm(event) {
-
         if (name.value == "") {
             window.alert("Vul een productnaam in!");
             return;
@@ -180,7 +179,7 @@ export class ItemDetails
             window.alert("prijzen moeten hoger zijn dan 0!");
             return;
         } else if(stock.value < 0 || minimumstock.value < 0){
-            window.alret("voorraden mogen niet lager dan 0 zijn!");
+            window.alert("voorraden mogen niet lager dan 0 zijn!");
             return;
         } else {
             GlobalProductCreationArray[GlobalProductCreationIndex] = detailArea.value;

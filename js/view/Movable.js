@@ -88,6 +88,7 @@ export class Movable
 
     DragDrop(e)
     {
+        if (this.currentProduct == null) e.target.style.backgroundColor = "lightgrey"; return;
         if (e.target.classList.contains('dropzone'))
         {
             e.preventDefault();

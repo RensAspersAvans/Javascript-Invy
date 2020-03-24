@@ -1,12 +1,8 @@
 import {Regios} from "../model/Regios";
 import {WareHouse} from "../model/Warehouse";
 
-const productName = document.getElementById("product-name");
-const productPrice = document.getElementById("product-price");
-const productDetails = document.getElementById("product-details-list");
 const canvas = document.getElementById("product-img");
 const imgUploadBtn = document.getElementById("no-img");
-const imgDiv = document.getElementById("product-img-div");
 const loadedDiv = document.getElementById("loaded-img-div");
 const ctx = canvas.getContext("2d");
 const name = document.getElementById("details-name");
@@ -41,7 +37,7 @@ export class ItemDetails
 
     ShowDetails(itemCode){
         form.style.display = "block";
-        this.regio = Regios.getRegio(this.selectedRegio);
+        this.regio = Regios.getRegio(document.getElementById("regioSelect").options[document.getElementById("regioSelect").selectedIndex].text.toLowerCase());
         this.productCode = itemCode;
         this.loadedProduct = this.regio.items[itemCode];
         let elements = form.querySelectorAll("input, select");
@@ -59,7 +55,9 @@ export class ItemDetails
         }
         window.GlobalProductShowIndex = 0;
         window.GlobalProductShowArray = this.loadedProduct.details;
-        detailArea.value =  window.GlobalProductShowArray[0];
+        if(GlobalProductShowArray.length > 0){
+            detailArea.value = GlobalProductShowArray[0];
+        }
         imgUploadBtn.style.display = "flow-root";
     }
 
@@ -191,7 +189,7 @@ export class ItemDetails
             let detailsArray = GlobalProductShowArray.filter(element => {
                 return element != "";
             });
-            let elements = form.querySelectorAll("input");
+            let elements = form.querySelectorAll("input, select");
             for (let index = 0; index < elements.length; index++) {
                 let element = elements[index];
                 let name = element.name;
@@ -259,9 +257,9 @@ export class ItemDetails
             detailArea.value = GlobalProductShowArray[GlobalProductShowIndex];
         }
         if (GlobalProductShowArray.length >= GlobalProductShowIndex) {
-            nextButton.textContent = "+";
+            NextButton.textContent = "+";
         } else {
-            nextButton.textContent = ">";
+            NextButton.textContent = ">";
         }
     }
 
@@ -274,7 +272,8 @@ export class ItemDetails
             }
             GlobalProductShowIndex--;
             detailArea.value = GlobalProductShowArray[GlobalProductShowIndex];
-            nextButton.textContent = ">";
+
+            NextButton.textContent = ">";
         }
     }
 

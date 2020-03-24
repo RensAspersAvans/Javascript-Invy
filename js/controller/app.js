@@ -7,6 +7,7 @@ import {WeatherAPI} from "../weatherAPI";
 //region SelectRegio
 document.getElementById('chooseRegio').addEventListener('click', switchInterface);
 //endregion
+
 //region ItemDetails
 const ItemDetailsShower = new ItemDetails();
 window.GlobalItemDetailShower = ItemDetailsShower;
@@ -20,6 +21,12 @@ document.getElementById("close-canvas").addEventListener('click', function(e){
 document.getElementById('getPicture').addEventListener('change', function(e){
     ItemDetailsShower.HandleFileSelect(e);
 }, false);
+document.getElementById("close-show-popup").addEventListener('click', function(e){
+    ItemDetailsShower.CloseDetails();
+});
+document.getElementById("moredetails").addEventListener('click', function(e){
+    ItemDetailsShower.ShowNextDetails();
+});
 //endregion
 
 //region Drag and Drop

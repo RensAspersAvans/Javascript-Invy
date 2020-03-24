@@ -223,15 +223,27 @@ export class ItemDetails
         let element = null;
         switch (selectedRegio) {
             case "kleding":
-                element = document.getElementById("detail-regio1");
+                element = document.getElementById("detailregio1");
                 break;
             case "tierlatijn":
-                element = document.getElementById("detail-regio2");
+                element = document.getElementById("detailregio2");
                 break;
             case "decoratie":
-                element = document.getElementById("detail-regio3");
+                element = document.getElementById("detailregio3");
                 break;
         }
         element.style.display = "flex";
     }
+
+    CloseDetails()
+    {
+        document.getElementById("detailregio1").style.display = "none";
+        document.getElementById("detailregio2").style.display = "none";
+        document.getElementById("detailregio3").style.display = "none";
+        document.getElementById("detailsecond").style.display = "none";
+        document.getElementById("detailfirst").style.display = "flex";
+        document.getElementById("details-popup").style.display = "none";
+    }
+
+
 }

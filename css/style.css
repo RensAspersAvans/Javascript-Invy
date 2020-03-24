@@ -21,12 +21,12 @@ body {
 
 .popup {
 	display: none;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	height: 100%;
 	width: 100%;
-	z-index: 10;
+	z-index: 999;
 	background-color: rgba(102, 153, 153, 0.5);
 }
 
@@ -140,6 +140,12 @@ body {
 #detailsecond, #detail-regio1, #detail-regio2, #detail-regio3
 {
     display: none;
+    flex-direction: column;
+}
+
+#detailfirst
+{
+    display: flex;
     flex-direction: column;
 }
 

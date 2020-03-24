@@ -70,7 +70,7 @@ export class ProductCreationPopup {
             let elements = form.querySelectorAll("input");
             for (let index = 0; index < elements.length; index++) {
                 let element = elements[index];
-                if(element.value != "" || element.name == ""){
+                if(element.value != "" && element.name != null && element.value != "#000000"){
                     let name = element.name;
                     let value = element.value;
                     obj [name] = value;
@@ -93,7 +93,7 @@ export class ProductCreationPopup {
         let elements = form.querySelectorAll("input, select");
         for (let index = 0; index < elements.length; index++) {
             let element = elements[index];
-            if(element.value != "" || element.name == ""){
+            if(element.value != "" && element.name != null && element.value != "#000000"){
                 let name = element.name;
                 let value = element.value;
                 obj [name] = value;
@@ -112,8 +112,7 @@ export class ProductCreationPopup {
         window.GlobalJson = null;
         Regios.updateRegio(regio);
         WareHouse.showItems();
-        form.style.display = "none";
-        openFormButton.style.display = "block";
+        GlobalProductCreationClass.CloseForm();
     }
 
 
@@ -131,13 +130,17 @@ export class ProductCreationPopup {
         window.GlobalProductCreationArray = [];
         window.GlobalProductCreationIndex = 0;
         detailArea.value = null;
+        GlobalProductCreationClass.ResetForm()
+
+
+    }
+
+    ResetForm(){
         document.getElementById("regio1").style.display = "none";
         document.getElementById("regio2").style.display = "none";
         document.getElementById("regio3").style.display = "none";
         document.getElementById("nextform").style.display = "none";
         document.getElementById("step1").style.display = "flex";
-
-
     }
 
     UpdateBTW(e){

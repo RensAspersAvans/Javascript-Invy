@@ -47,12 +47,15 @@ export class ItemDetails
         let elements = form.querySelectorAll("input");
         for (let x = 0; x < elements.length; x++) {
             let element = elements[x];
-            for (let y in this.loadedProduct){
-                if(element.name == y){
-                    element.value = this.loadedProduct[y.toString()];
-                    break;
+            if(element.name != "getpicture"){
+                for (let y in this.loadedProduct){
+                    if(element.name == y){
+                        element.value = this.loadedProduct[y.toString()];
+                        break;
+                    }
                 }
             }
+
         }
         GlobalProductShowIndex = 0;
         GlobalProductShowArray = this.loadedProduct.details;

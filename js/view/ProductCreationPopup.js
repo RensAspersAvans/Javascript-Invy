@@ -90,7 +90,7 @@ export class ProductCreationPopup {
 
     SaveFormStep2(){
         let obj = {};
-        let elements = form.querySelectorAll("input");
+        let elements = form.querySelectorAll("input, select");
         for (let index = 0; index < elements.length; index++) {
             let element = elements[index];
             if(element.value != ""){

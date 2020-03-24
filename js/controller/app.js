@@ -27,6 +27,10 @@ document.getElementById("close-show-popup").addEventListener('click', function(e
 document.getElementById("moredetails").addEventListener('click', function(e){
     ItemDetailsShower.ShowNextDetails();
 });
+document.getElementById("details-previous").addEventListener("click", ItemDetailsShower.PreviousDetail);
+document.getElementById("details-next").addEventListener("click", ItemDetailsShower.NextOrNewDetail);
+document.getElementById("save-details").addEventListener("click", ItemDetailsShower.SaveForm);
+document.getElementById("details-sellprice").addEventListener("input", function(e){ItemDetailsShower.UpdateBTW(e)});
 //endregion
 
 //region Drag and Drop

@@ -17,7 +17,7 @@ const stock = document.getElementById("details-stock");
 const minimumstock = document.getElementById("details-minimumstock");
 const form = document.getElementById("details-popup");
 const detailArea = document.getElementById("show-detailArea");
-const nextButton = document.getElementById("save-details");
+const NextButton = document.getElementById("details-next");
 
 export class ItemDetails
 {
@@ -44,7 +44,7 @@ export class ItemDetails
         this.regio = Regios.getRegio(this.selectedRegio);
         this.productCode = itemCode;
         this.loadedProduct = this.regio.items[itemCode];
-        let elements = form.querySelectorAll("input");
+        let elements = form.querySelectorAll("input, select");
         for (let x = 0; x < elements.length; x++) {
             let element = elements[x];
             if(element.name != "getpicture"){
@@ -57,9 +57,9 @@ export class ItemDetails
             }
 
         }
-        GlobalProductShowIndex = 0;
-        GlobalProductShowArray = this.loadedProduct.details;
-
+        window.GlobalProductShowIndex = 0;
+        window.GlobalProductShowArray = this.loadedProduct.details;
+        detailArea.value =  window.GlobalProductShowArray[0];
         imgUploadBtn.style.display = "flow-root";
     }
 
@@ -171,7 +171,8 @@ export class ItemDetails
         imgUploadBtn.style.display = "none";
     }
 
-    SaveForm(event) {
+
+    SaveForm() {
         if (name.value == "") {
             window.alert("Vul een productnaam in!");
             return;
@@ -185,9 +186,9 @@ export class ItemDetails
             window.alert("voorraden mogen niet lager dan 0 zijn!");
             return;
         } else {
-            GlobalProductCreationArray[GlobalProductCreationIndex] = detailArea.value;
+            GlobalProductShowArray[GlobalProductShowIndex] = detailArea.value;
             let obj = {};
-            let detailsArray = GlobalProductCreationArray.filter(element => {
+            let detailsArray = GlobalProductShowArray.filter(element => {
                 return element != "";
             });
             let elements = form.querySelectorAll("input");
@@ -199,19 +200,15 @@ export class ItemDetails
                 element.value = null;
             }
             obj["details"] = detailsArray;
-            obj["picture"] = "";
-            let jsonstr = JSON.stringify(obj);
-            let selectedRegio = document.getElementById("regioSelect");
-            let regio = Regios.getRegio(selectedRegio[selectedRegio.selectedIndex].innerText.toLowerCase());
 
-            regio.items.push(JSON.parse(jsonstr));
-            Regios.updateRegio(regio);
+            for(let key in obj){
+                GlobalItemDetailShower.loadedProduct[key] = obj[key]
+            }
+
+            GlobalItemDetailShower.regio.items[GlobalItemDetailShower.productCode] = GlobalItemDetailShower.loadedProduct;
+            Regios.updateRegio(GlobalItemDetailShower.regio);
+            GlobalItemDetailShower.CloseDetails();
             WareHouse.showItems();
-            form.style.display = "none";
-            openFormButton.style.display = "block";
-            window.GlobalProductCreationArray = [];
-            window.GlobalProductCreationIndex = 0;
-            detailArea.value = null;
         }
     }
 
@@ -251,5 +248,40 @@ export class ItemDetails
         document.getElementById("details-popup").style.display = "none";
     }
 
+    NextOrNewDetail() {
+        if (GlobalProductShowIndex >= GlobalProductShowArray.length - 1) {
+            GlobalProductShowArray[GlobalProductShowIndex] = detailArea.value;
+            GlobalProductShowIndex++;
+            detailArea.value = null;
+        } else {
+            GlobalProductShowArray[GlobalProductShowIndex] = detailArea.value;
+            GlobalProductShowIndex++;
+            detailArea.value = GlobalProductShowArray[GlobalProductShowIndex];
+        }
+        if (GlobalProductShowArray.length >= GlobalProductShowIndex) {
+            nextButton.textContent = "+";
+        } else {
+            nextButton.textContent = ">";
+        }
+    }
 
+    PreviousDetail() {
+        if (GlobalProductShowIndex == 0) {
+            return;
+        } else {
+            if (detailArea.value != "") {
+                GlobalProductShowArray[GlobalProductShowIndex] = detailArea.value;
+            }
+            GlobalProductShowIndex--;
+            detailArea.value = GlobalProductShowArray[GlobalProductShowIndex];
+            nextButton.textContent = ">";
+        }
+    }
+
+    UpdateBTW(e){
+        let noBTW = e.target.value;
+        let BTW = noBTW * 1.12;
+        BTW = BTW.toFixed(2);
+        btw.value = BTW;
+    }
 }

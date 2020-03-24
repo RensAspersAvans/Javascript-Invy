@@ -8,7 +8,6 @@ const nextButton = document.getElementById("next");
 const name = document.getElementById("name");
 const buyprice = document.getElementById("buyprice");
 const sellprice = document.getElementById("sellprice");
-const btw = document.getElementById("sellpricebtw");
 const stock = document.getElementById("stock");
 const minimumstock = document.getElementById("minimumstock");
 

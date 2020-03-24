@@ -1,6 +1,5 @@
 import {Regios} from "../model/Regios";
-import {WareHouse} from "../model/Warehouse";
-import {ItemDetails} from "../view/ItemDetails";
+
 
 export class Movable
 {

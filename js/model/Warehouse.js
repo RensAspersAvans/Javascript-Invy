@@ -134,21 +134,14 @@ export class WareHouse
             oldItemList.removeChild(oldItemList.lastElementChild);
         }
 
-        //fill with new item
         var itemName = document.createElement("p");
         itemName.classList.add('m-0');
         itemName.innerHTML = "<strong>Naam: </strong>" + selectedRegio.items[itemCode].name;
         var itemPrice = document.createElement("p");
         itemPrice.classList.add('m-0');
         itemPrice.innerHTML = "<strong>Prijs: </strong>" + selectedRegio.items[itemCode].price;
-        // var itemDetails = document.createElement("p");
-        // itemDetails.classList.add('m-0');
-        // itemDetails.innerHTML = "<strong>Price: </strong>" + selectedRegio.items[itemCode].price;
+
 
         document.getElementById("selected-products").append(itemName, itemPrice);
-
-        // var itemDesc = document.createElement("p");
-        // itemDesc.innerHTML = "Prijs: " + selectedRegio.items[itemCode].de;
-        // document.getElementById("selected-products").appendChild(itemName);
     }
 }

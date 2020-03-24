@@ -29,7 +29,7 @@ export class WeatherAPI{
                     weatherIcon.src = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
                     temperature.innerHTML = parseInt(data.main.temp - 273) + "°";
                     humidity.innerHTML = data.main.humidity + "%";
-                })
+                }).catch(err => alert("Stad niet gevonden"))
         }
     }
 }

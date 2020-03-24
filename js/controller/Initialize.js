@@ -25,39 +25,39 @@ const clothingMap = new Array(
 );
 
 const tierlatinMap = new Array(
-    ["@", null, null, null, null, null, null, "#", null, null, null, null, null, null, "@"],
+    ["@", null, null, null, null, null, null, null, null, null, null, null, null, null, "@"],
+    [null, null, null, null, null, null, "#", "#", "#", "#", "#", null, null, null, null],
+    [null, null, null, null, null, null, "#", null, null, null, "#", null, null, null, null],
+    [null, null, null, null, "#", "#", "#", null, null, null, "#", "#", "#", null, null],
+    [null, null, null, null, "#", null, null, null, null, null, null, null, "#", null, null],
+    [null, null, null, null, "#", null, null, null, null, null, null, null, "#", null, null],
+    ["#", "#", "#", null, "#", "#", "#", null, null, null, "#", "#", "#", null, null],
+    [null, null, "#", null, null, null, "#", null, null, null, "#", null, null, null, null],
+    [null, null, "#", null, null, null, "#", null, "#", "#", "#", null, null, null, null],
+    [null, null, "#", null, null, null, "#", null, "#", null, null, null, null, null, null],
+    [null, null, "#", "#", "#", "#", "#", "#", "#", null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    ["@", null, null, null, null, null, null, "#", null, null, null, null, null, null, "@"]
+    ["@", null, null, null, null, null, null, null, null, null, null, null, null, null, "@"]
 );
 
 const decorationMap = new Array(
     ["@", null, null, null, null, null, null, "#", null, null, null, null, null, null, "@"],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, "@", null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, "@", null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
-    ["@", null, null, null, null, null, null, "#", null, null, null, null, null, null, "@"]
+    [null, null, null, null, null, null, null, "#", null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, "#", null, null, null, null, null, null, null],
+    [null, null, null, "#", "#", "#", "#", "#", null, null, null, null, null, null, null],
+    [null, null, null, "#", null, "@", null, null, null, null, null, null, null, null, null],
+    [null, null, null, "#", null, null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, "#", null, null, null, null, null, null, null, "@", null, null, null],
+    [null, null, null, "#", null, null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, "#", null, null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, "#", null, null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, "#", null, null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, "#", null, null, null, null, null, null, null, null, null, null, null],
+    [null, null, null, "#", "#", "#", "#", "#", "#", null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null, "#", null, null, null, null, null, null],
+    ["@", null, null, null, null, null, null, null, "#", null, null, null, null, null, "@"]
 );
 //endregion
 

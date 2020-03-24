@@ -104,9 +104,13 @@ export class ProductCreationPopup {
         window.GlobalProductCreationArray = [];
         window.GlobalProductCreationIndex = 0;
         detailArea.value = null;
-        document.getElementById('regio1').style.display = "none";
-        document.getElementById('regio2').style.display = "none";
-        document.getElementById('regio3').style.display = "none";
+        document.getElementById("regio1").style.display = "none";
+        document.getElementById("regio2").style.display = "none";
+        document.getElementById("regio3").style.display = "none";
+        document.getElementById("nextform").style.display = "none";
+        document.getElementById("step1").style.display = "flex";
+
+
     }
 
     UpdateBTW(e){
@@ -120,7 +124,8 @@ export class ProductCreationPopup {
     {
        let selectedRegio = document.getElementById("regioSelect").options[document.getElementById("regioSelect").selectedIndex].text.toLowerCase();
         document.getElementById("step1").style.display = "none";
-        let element;
+        document.getElementById("nextform").style.display = "block";
+        let element = null;
        switch (selectedRegio) {
            case "kleding":
                element = document.getElementById("regio1");
@@ -132,9 +137,7 @@ export class ProductCreationPopup {
                element = document.getElementById("regio3");
                break;
        }
-        element.style.display = "block";
-        element.classList.add("d-flex");
-        element.classList.add("flex-column");
+        element.style.display = "flex";
     }
 
 }

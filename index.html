@@ -128,40 +128,65 @@
                <div id="details-popup" class="popup">
                    <div id="detailsForm">
                        <div class="formcontainer d-flex flex-column">
-                           <label for="name">Naam</label>
-                           <input type="text" placeholder="productnaam" name="name" id="details-name">
-                           <label for="buyprice">Inkoopprijs</label>
-                           <input type="number" placeholder="inkoopprijs" name="buyprice" id="details-buyprice"></input>
-                           <label for="sellprice">Verkoopprijs ex btw</label>
-                           <input type="number" placeholder="verkoopprijs ex btw" name="sellprice" id="details-sellprice"></input>
-                           <label for="sellpricebtw">Verkooprijs inc btw</label>
-                           <input type="number" placeholder="Verkoopprijs inc btw" name="sellpricebtw" id="details-sellpricebtw" readonly></input>
-                           <label for="stock">Voorraad</label>
-                           <input type="number" placeholder="Voorraad" name="stock" id="details-stock"></input>
-                           <label for="minimumstock">Minimum voorraad</label>
-                           <input type="number" placeholder="Minimum voorraad" name="minimumstock" id="details-minimumstock"></input>
-                           <label for="detailArea">eigenschappen:</label>
-                           <textarea placeholder="eigenschap" id="show-detailArea"></textarea>
-                           <div class="d-flex justify-content-between">
-                               <button class="btn btn-secondary" id="details-previous" type="button"><</button>
-                               <button class="btn btn-success" id="details-next" type="button">+</button>
-                           </div>
-                           <br>
-                           <div id="no-img">
-                               <input type="file" id="getPicture" />
-                               <label class="btn btn-secondary w-100" for="getPicture" id="picture-label">Foto uploaden</label>
-                           </div>
+                           <div id="detailfirst">
+                                <label for="name">Naam</label>
+                               <input type="text" placeholder="productnaam" name="name" id="details-name">
+                               <label for="buyprice">Inkoopprijs</label>
+                               <input type="number" placeholder="inkoopprijs" name="buyprice" id="details-buyprice">
+                               <label for="sellprice">Verkoopprijs ex btw</label>
+                               <input type="number" placeholder="verkoopprijs ex btw" name="sellprice" id="details-sellprice">
+                               <label for="sellpricebtw">Verkooprijs inc btw</label>
+                               <input type="number" placeholder="Verkoopprijs inc btw" name="sellpricebtw" id="details-sellpricebtw" readonly>
+                               <label for="stock">Voorraad</label>
+                               <input type="number" placeholder="Voorraad" name="stock" id="details-stock">
+                               <label for="minimumstock">Minimum voorraad</label>
+                               <input type="number" placeholder="Minimum voorraad" name="minimumstock" id="details-minimumstock">
+                               <label for="detailArea">eigenschappen:</label>
+                               <textarea placeholder="eigenschap" id="show-detailArea"></textarea>
+                               <div class="d-flex justify-content-between">
+                                   <button class="btn btn-secondary" id="details-previous" type="button"><</button>
+                                   <button class="btn btn-success" id="details-next" type="button">+</button>
+                               </div>
+                               <br>
+                               <div id="no-img">
+                                   <input type="file" id="getPicture" />
+                                   <label class="btn btn-secondary w-100" for="getPicture" id="picture-label">Foto uploaden</label>
+                               </div>
 
-                           <div id="loaded-img-div">
-                               <button class="btn btn-success w-100" id="open-canvas">Foto bekijken</button>
-                               <div id="image-popup">
-                                   <div id="product-img-div">
-                                       <canvas id="product-img">
+                               <div id="loaded-img-div">
+                                   <button class="btn btn-success w-100" id="open-canvas">Foto bekijken</button>
+                                   <div id="image-popup">
+                                       <div id="product-img-div">
+                                           <canvas id="product-img">
 
-                                       </canvas>
-                                       <button class="btn btn-danger w-100" id="close-canvas">close image</button>
+                                           </canvas>
+                                           <button class="btn btn-danger w-100" id="close-canvas">close image</button>
+                                       </div>
                                    </div>
                                </div>
+                           </div>
+                           <div id="detailsecond">
+                                   <div id="detailregio1">
+                                       <label for="kleur">Kleur</label>
+                                       <input type="color" placeholder="kleur" name="color" id="detail-colorinput">
+
+                                       <select name="size" id="detail-sizeinput">
+                                           <option value="">Maat kiezen</option>
+                                           <option value="0">xs</option>
+                                           <option value="1">s</option>
+                                           <option value="2">m</option>
+                                           <option value="3">l</option>
+                                           <option value="4">xl</option>
+                                       </select>
+                                   </div>
+                                   <div id="detailregio2">
+                                       <input type="number" placeholder="gewicht" id="detail-weightinput">
+                                   </div>
+                                   <div id="detailregio3">
+                                       <input type="number" placeholder="grootte in cm" id="detail-cminput">
+                                       <input type="color" placeholder="kleur" id="detail-decocolorinput">
+                                       <input type="number" placeholder="aantal in verpakking" id="detail-amountinput">
+                                   </div>
                            </div>
                            <br>
                            <div class="d-flex justify-content-between">

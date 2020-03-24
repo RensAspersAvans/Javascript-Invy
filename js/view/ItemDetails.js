@@ -210,6 +210,25 @@ export class ItemDetails
             window.GlobalProductCreationIndex = 0;
             detailArea.value = null;
         }
+    }
 
+    ShowNextDetails()
+    {
+        let selectedRegio = document.getElementById("regioSelect").options[document.getElementById("regioSelect").selectedIndex].text.toLowerCase();
+        document.getElementById("detailfirst").style.display = "none";
+        document.getElementById("detailsecond").style.display = "block";
+        let element = null;
+        switch (selectedRegio) {
+            case "kleding":
+                element = document.getElementById("detail-regio1");
+                break;
+            case "tierlatijn":
+                element = document.getElementById("detail-regio2");
+                break;
+            case "decoratie":
+                element = document.getElementById("detail-regio3");
+                break;
+        }
+        element.style.display = "flex";
     }
 }

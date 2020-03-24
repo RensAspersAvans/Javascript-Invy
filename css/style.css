@@ -137,4 +137,10 @@ body {
     flex-direction: column;
 }
 
+#detailsecond, #detail-regio1, #detail-regio2, #detail-regio3
+{
+    display: none;
+    flex-direction: column;
+}
+
   

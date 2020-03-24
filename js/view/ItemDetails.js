@@ -219,19 +219,25 @@ export class ItemDetails
     {
         let selectedRegio = document.getElementById("regioSelect").options[document.getElementById("regioSelect").selectedIndex].text.toLowerCase();
         document.getElementById("detailfirst").style.display = "none";
-        document.getElementById("detailsecond").style.display = "block";
-        let element = null;
+        let element;
         switch (selectedRegio) {
             case "kleding":
                 element = document.getElementById("detailregio1");
+                document.getElementById("detailregio2").style.display = "none";
+                document.getElementById("detailregio3").style.display = "none";
                 break;
             case "tierlatijn":
                 element = document.getElementById("detailregio2");
+                document.getElementById("detailregio1").style.display = "none";
+                document.getElementById("detailregio3").style.display = "none";
                 break;
             case "decoratie":
                 element = document.getElementById("detailregio3");
+                document.getElementById("detailregio2").style.display = "none";
+                document.getElementById("detailregio1").style.display = "none";
                 break;
         }
+        document.getElementById("detailsecond").style.display = "flex";
         element.style.display = "flex";
     }
 

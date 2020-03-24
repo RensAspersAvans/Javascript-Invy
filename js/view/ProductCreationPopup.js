@@ -114,6 +114,11 @@ export class ProductCreationPopup {
         WareHouse.showItems();
         form.style.display = "none";
         openFormButton.style.display = "block";
+        document.getElementById("regio1").style.display = "none";
+        document.getElementById("regio2").style.display = "none";
+        document.getElementById("regio3").style.display = "none";
+        document.getElementById("nextform").style.display = "none";
+        document.getElementById("step1").style.display = "flex";
     }
 
 
@@ -136,8 +141,6 @@ export class ProductCreationPopup {
         document.getElementById("regio3").style.display = "none";
         document.getElementById("nextform").style.display = "none";
         document.getElementById("step1").style.display = "flex";
-
-
     }
 
     UpdateBTW(e){

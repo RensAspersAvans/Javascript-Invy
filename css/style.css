@@ -137,7 +137,7 @@ body {
     flex-direction: column;
 }
 
-#detailsecond, #detail-regio1, #detail-regio2, #detail-regio3
+#detail-regio1, #detail-regio2, #detail-regio3, #detailsecond
 {
     display: none;
     flex-direction: column;

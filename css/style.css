@@ -149,4 +149,8 @@ body {
     flex-direction: column;
 }
 
-  
+.form-group
+{
+    display: none;
+    flex-direction: column;
+}

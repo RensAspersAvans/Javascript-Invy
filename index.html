@@ -127,7 +127,7 @@
 
                <div id="details-popup" class="popup">
                    <div id="detailsForm">
-                       <div class="formcontainer d-flex flex-column">
+                       <div class="formcontainer">
                            <div id="detailfirst">
                                 <label for="name">Naam</label>
                                <input type="text" placeholder="productnaam" name="name" id="details-name">
@@ -164,10 +164,10 @@
                                        </div>
                                    </div>
                                </div>
-                               <button class="btn btn-success" id="moredetails">meer</button>
+                               <button class="btn btn-success mt-2" id="moredetails">meer</button>
                            </div>
                            <div id="detailsecond">
-                                   <div id="detailregio1">
+                                   <div class="form-group" id="detailregio1">
                                        <label for="detail-colorinput">Kleur</label>
                                        <input type="color" placeholder="kleur" name="color" id="detail-colorinput">
 
@@ -180,10 +180,12 @@
                                            <option value="4">xl</option>
                                        </select>
                                    </div>
-                                   <div id="detailregio2">
+
+                                   <div class="form-group" id="detailregio2">
                                        <input type="number" placeholder="gewicht" id="detail-weightinput">
                                    </div>
-                                   <div id="detailregio3">
+
+                                   <div class="form-group" id="detailregio3">
                                        <input type="number" placeholder="grootte in cm" id="detail-cminput">
                                        <input type="color" placeholder="kleur" id="detail-decocolorinput">
                                        <input type="number" placeholder="aantal in verpakking" id="detail-amountinput">

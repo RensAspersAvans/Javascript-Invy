@@ -5,18 +5,19 @@ const openFormButton = document.getElementById("open-create-popup");
 const form = document.getElementById("form-popup");
 const detailArea = document.getElementById("detailArea");
 const nextButton = document.getElementById("next");
-const name = document.getElementById("details-name");
-const buyprice = document.getElementById("details-buyprice");
-const sellprice = document.getElementById("details-sellprice");
-const btw = document.getElementById("details-sellpricebtw");
-const stock = document.getElementById("details-stock");
-const minimumstock = document.getElementById("details-minimumstock");
+const name = document.getElementById("name");
+const buyprice = document.getElementById("buyprice");
+const sellprice = document.getElementById("sellprice");
+const btw = document.getElementById("sellpricebtw");
+const stock = document.getElementById("stock");
+const minimumstock = document.getElementById("minimumstock");
 
 export class ProductCreationPopup {
 
     constructor() {
         window.GlobalProductCreationIndex = 0;
         window.GlobalProductCreationArray = [];
+        window.GlobalProductCreationClass = this;
     }
 
     NextOrNewDetail() {
@@ -49,22 +50,17 @@ export class ProductCreationPopup {
         }
     }
 
-    SaveForm(event) {
-
-        //TODO: CONTROLLE OP ITEMTYPE
+    SaveFormStep1() {
+        let returnvalue = false;
 
         if (name.value == "") {
             window.alert("Vul een productnaam in!");
-            return;
         } else if (buyprice.value == "" || sellprice.value == "" || stock.value == "" || minimumstock.value == "") {
             window.alert("Vul alle waardes in!");
-            return;
         } else if (buyprice.value <= 0 || sellprice.value <= 0) {
             window.alert("prijzen moeten hoger zijn dan 0!");
-            return;
         } else if(stock.value < 0 || minimumstock.value < 0){
             window.alert("voorraden mogen niet lager dan 0 zijn!");
-            return;
         } else {
             GlobalProductCreationArray[GlobalProductCreationIndex] = detailArea.value;
             let obj = {};
@@ -83,21 +79,43 @@ export class ProductCreationPopup {
             }
             obj["details"] = detailsArray;
             obj["picture"] = "";
-            let jsonstr = JSON.stringify(obj);
-            let selectedRegio = document.getElementById("regioSelect");
-            let regio = Regios.getRegio(selectedRegio[selectedRegio.selectedIndex].innerText.toLowerCase());
-
-            regio.items.push(JSON.parse(jsonstr));
-            Regios.updateRegio(regio);
-            WareHouse.showItems();
-            form.style.display = "none";
-            openFormButton.style.display = "block";
+            window.GlobalJson = obj;
             window.GlobalProductCreationArray = [];
             window.GlobalProductCreationIndex = 0;
             detailArea.value = null;
+            returnvalue = true;
+        }
+        return returnvalue;
+    }
+
+    SaveFormStep2(){
+        let obj = {};
+        let elements = form.querySelectorAll("input");
+        for (let index = 0; index < elements.length; index++) {
+            let element = elements[index];
+            if(element.value != ""){
+                let name = element.name;
+                let value = element.value;
+                obj [name] = value;
+            }
+            element.value = null;
         }
 
+        for(let key in obj){
+            GlobalJson[key] = obj[key]
+        }
+
+        let selectedRegio = document.getElementById("regioSelect");
+        let regio = Regios.getRegio(selectedRegio[selectedRegio.selectedIndex].innerText.toLowerCase());
+
+        regio.items.push(GlobalJson);
+        window.GlobalJson = null;
+        Regios.updateRegio(regio);
+        WareHouse.showItems();
+        form.style.display = "none";
+        openFormButton.style.display = "block";
     }
+
 
     OpenForm() {
         form.style.display = "block";
@@ -131,7 +149,10 @@ export class ProductCreationPopup {
 
     ShowNextStep()
     {
-       let selectedRegio = document.getElementById("regioSelect").options[document.getElementById("regioSelect").selectedIndex].text.toLowerCase();
+        if(!GlobalProductCreationClass.SaveFormStep1()){
+            return;
+        }
+        let selectedRegio = document.getElementById("regioSelect").options[document.getElementById("regioSelect").selectedIndex].text.toLowerCase();
         document.getElementById("step1").style.display = "none";
         document.getElementById("nextform").style.display = "block";
         let element = null;

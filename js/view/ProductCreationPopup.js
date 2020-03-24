@@ -70,7 +70,7 @@ export class ProductCreationPopup {
             let elements = form.querySelectorAll("input");
             for (let index = 0; index < elements.length; index++) {
                 let element = elements[index];
-                if(element.value != ""){
+                if(element.value != "" || element.name == ""){
                     let name = element.name;
                     let value = element.value;
                     obj [name] = value;
@@ -93,7 +93,7 @@ export class ProductCreationPopup {
         let elements = form.querySelectorAll("input, select");
         for (let index = 0; index < elements.length; index++) {
             let element = elements[index];
-            if(element.value != ""){
+            if(element.value != "" || element.name == ""){
                 let name = element.name;
                 let value = element.value;
                 obj [name] = value;

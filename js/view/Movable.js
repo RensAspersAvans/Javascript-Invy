@@ -87,6 +87,8 @@ export class Movable
 
     DragDrop(e)
     {
+        //TODO: check if e.target is undefined before placing.
+        
         if (e.target.classList.contains('dropzone'))
         {
             e.preventDefault();

@@ -35,6 +35,8 @@ export class ItemDetails
             imgUploadBtn.style.display = "none";
         }
         this.EmptySelected();
+        window.GlobalProductShowIndex = 0;
+        window.GlobalProductShowArray = [];
     }
 
     ShowDetails(itemCode){
@@ -42,6 +44,18 @@ export class ItemDetails
         this.regio = Regios.getRegio(this.selectedRegio);
         this.productCode = itemCode;
         this.loadedProduct = this.regio.items[itemCode];
+        let elements = form.querySelectorAll("input");
+        for (let x = 0; x < elements.length; x++) {
+            let element = elements[x];
+            for (let y in this.loadedProduct){
+                if(element.name == y){
+                    element.value = this.loadedProduct[y.toString()];
+                    break;
+                }
+            }
+        }
+        GlobalProductShowIndex = 0;
+        GlobalProductShowArray = this.loadedProduct.details;
 
         imgUploadBtn.style.display = "flow-root";
     }
@@ -159,11 +173,14 @@ export class ItemDetails
         if (name.value == "") {
             window.alert("Vul een productnaam in!");
             return;
-        } else if (buyprice.value == "" || sellprice.value == "" || stock.value == "") {
-            window.alert("Vul een prijs in!");
+        } else if (buyprice.value == "" || sellprice.value == "" || stock.value == "" || minimumstock.value == "") {
+            window.alert("Vul alle waardes in!");
             return;
-        } else if (document.getElementById("newPrice").value <= 0) {
-            window.alert("Prijs moet hoger zijn dan 0!");
+        } else if (buyprice.value <= 0 || sellprice.value <= 0) {
+            window.alert("prijzen moeten hoger zijn dan 0!");
+            return;
+        } else if(stock.value < 0 || minimumstock.value < 0){
+            window.alret("voorraden mogen niet lager dan 0 zijn!");
             return;
         } else {
             GlobalProductCreationArray[GlobalProductCreationIndex] = detailArea.value;

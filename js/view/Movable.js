@@ -110,7 +110,6 @@ export class Movable
             let productItem = document.getElementsByClassName(this.currentProduct)[0]
             productItem.setAttribute('draggable',true);
             productItem.style.backgroundColor = "green";
-            WareHouse.resetSelected();
         }
         this.currentItem = null;
     }

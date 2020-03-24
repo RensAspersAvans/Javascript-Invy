@@ -151,12 +151,4 @@ export class WareHouse
         // itemDesc.innerHTML = "Prijs: " + selectedRegio.items[itemCode].de;
         // document.getElementById("selected-products").appendChild(itemName);
     }
-
-    static resetSelected()
-    {
-        let oldItemList = document.getElementById("selected-products");
-        emptySelected();
-    }
-
-
 }

@@ -201,7 +201,10 @@ export class ItemDetails
                 let element = elements[index];
                 let name = element.name;
                 let value = element.value;
-                obj [name] = value;
+                if(!obj.hasOwnProperty(name) && name != '""'){
+                    obj [name] = value;
+                }
+
                 element.value = null;
             }
             obj["details"] = detailsArray;

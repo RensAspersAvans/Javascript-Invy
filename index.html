@@ -62,8 +62,8 @@
                                 </div>
                                   <div class="formcontainer" id="nextform">
                                    <div id="regio1">
-                                        <label for="kleur">Kleur</label>
-                                        <input type="color" placeholder="kleur" name="color" id="colorinput">
+                                        <label for="colorinput">Kleur</label>
+                                        <input type="color" placeholder="kleur" name="color-1" id="colorinput">
 
                                         <select name="size" id="sizeinput">
                                            <option value="">Maat kiezen</option>
@@ -78,9 +78,9 @@
                                         <input type="number" placeholder="gewicht" id="weightinput">
                                     </div>
                                     <div id="regio3">
-                                        <input type="number" placeholder="grootte in cm" id="cminput">
-                                        <input type="color" placeholder="kleur" id="decocolorinput">
-                                        <input type="number" placeholder="aantal in verpakking" id="amountinput">
+                                        <input type="number" placeholder="grootte in cm" id="cminput" name="sizeCm">
+                                        <input type="color" placeholder="kleur" id="decocolorinput" name="color-3">
+                                        <input type="number" placeholder="aantal in verpakking" id="amountinput" name="amount">
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <button class="btn btn-danger m-2" type="button" class="form-button" id="close-create-popup2">Annuleren</button>
@@ -137,7 +137,7 @@
                            <div id="detailsecond">
                                    <div class="form-group" id="detailregio1">
                                        <label for="detail-colorinput">Kleur</label>
-                                       <input type="color" placeholder="kleur" name="color" id="detail-colorinput">
+                                       <input type="color" placeholder="kleur" name="color-1" id="detail-colorinput">
 
                                        <select name="size" id="detail-sizeinput">
                                            <option value="">Maat kiezen</option>
@@ -154,9 +154,9 @@
                                    </div>
 
                                    <div class="form-group" id="detailregio3">
-                                       <input type="number" placeholder="grootte in cm" id="detail-cminput">
-                                       <input type="color" name="color" placeholder="kleur" id="detail-decocolorinput">
-                                       <input type="number" placeholder="aantal in verpakking" id="detail-amountinput">
+                                       <input type="number" name ="sizeCm" placeholder="grootte in cm" id="detail-cminput">
+                                       <input type="color" name="color-3" placeholder="kleur" id="detail-decocolorinput">
+                                       <input type="number" name="amount" placeholder="aantal in verpakking" id="detail-amountinput">
                                    </div>
                            </div>
                            <br>

@@ -39,26 +39,30 @@ export class ItemDetails
         form.style.display = "block";
         this.regio = Regios.getRegio(document.getElementById("regioSelect").options[document.getElementById("regioSelect").selectedIndex].text.toLowerCase());
         this.productCode = itemCode;
-        this.loadedProduct = this.regio.items[itemCode];
-        let elements = form.querySelectorAll("input, select");
-        for (let x = 0; x < elements.length; x++) {
-            let element = elements[x];
-            if(element.name != "getpicture"){
-                for (let y in this.loadedProduct){
-                    if(element.name == y){
-                        element.value = this.loadedProduct[y.toString()];
-                        break;
+        if (/\d/g.test(itemCode))
+        {
+            this.loadedProduct = this.regio.items[itemCode];
+            let elements = form.querySelectorAll("input, select");
+            for (let x = 0; x < elements.length; x++) {
+                let element = elements[x];
+                if(element.name != "getpicture"){
+                    for (let y in this.loadedProduct){
+                        if(element.name == y){
+                            element.value = this.loadedProduct[y.toString()];
+                            break;
+                        }
                     }
                 }
+
             }
+            window.GlobalProductShowIndex = 0;
+            window.GlobalProductShowArray = this.loadedProduct.details;
+            if(GlobalProductShowArray.length > 0){
+                detailArea.value = GlobalProductShowArray[0];
+            }
+            imgUploadBtn.style.display = "flow-root";
 
         }
-        window.GlobalProductShowIndex = 0;
-        window.GlobalProductShowArray = this.loadedProduct.details;
-        if(GlobalProductShowArray.length > 0){
-            detailArea.value = GlobalProductShowArray[0];
-        }
-        imgUploadBtn.style.display = "flow-root";
     }
 
     LoadItem(itemCode){
@@ -70,17 +74,20 @@ export class ItemDetails
     }
 
     LoadPicture(){
-        if(GlobalItemDetailShower.loadedProduct.picture != ""){
-            loadedDiv.style.display = "block";
-            let img = new Image();
-                img.onload = function(){
-                    canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
-                    GlobalItemDetailShower.LoadImgOnCanvas(img);
-                    GlobalItemDetailShower.InitDrawing();
+        if (GlobalItemDetailShower.loadedProduct != null)
+        {
+            if(GlobalItemDetailShower.loadedProduct.picture != ""){
+                loadedDiv.style.display = "block";
+                let img = new Image();
+                    img.onload = function(){
+                        canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+                        GlobalItemDetailShower.LoadImgOnCanvas(img);
+                        GlobalItemDetailShower.InitDrawing();
+                }
+                img.src = this.loadedProduct.picture;
+            }else{
+                loadedDiv.style.display = "none";
             }
-            img.src = this.loadedProduct.picture;
-        }else{
-            loadedDiv.style.display = "none";
         }
     }
 

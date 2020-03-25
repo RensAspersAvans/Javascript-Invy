@@ -10,6 +10,7 @@ export class Movable
         this.currentClasslist = currentClasslist;
         this.currentProduct = currentProduct;
         this.ItemDetails = itemDetailShower;
+        this.correctItem = 0;
     }
 
     ClickItem(e)
@@ -42,6 +43,17 @@ export class Movable
 
     DragEnter(e)
     {
+        //TODO: check if e.target is undefined before placing.
+         for (let index in e.target.classList)
+         {
+             if (/[a-z]\d/g.test(e.target.classList[index]))
+             {
+                 this.correctItem++;
+             }
+         }
+
+        if (this.correctItem == 0) return;
+
         if (this.currentItem == null)
         {
             this.currentItem = e.target;
@@ -87,8 +99,8 @@ export class Movable
 
     DragDrop(e)
     {
-        //TODO: check if e.target is undefined before placing.
-        
+        if ( this.correctItem == 0) return;
+
         if (e.target.classList.contains('dropzone'))
         {
             e.preventDefault();
